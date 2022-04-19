@@ -26,18 +26,18 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Move(targetPos));
             }
         }
+    }
 
-        IEnumerator Move(Vector3 targetPos)
+    IEnumerator Move(Vector3 targetPos)
+    {
+        isMoving = true;
+
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            isMoving = true;
-
-            while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-                yield return null;
-            }
-            transform.position = targetPos;
-            isMoving = false;
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            yield return null;
         }
+        transform.position = targetPos;
+        isMoving = false;
     }
 }
