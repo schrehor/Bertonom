@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public LayerMask solidObjectLayer;
+    public LayerMask grassLayer;
+
     private bool isMoving;
     private Vector2 input;
     private Animator animator;
@@ -53,6 +56,19 @@ public class PlayerController : MonoBehaviour
         }
         transform.position = targetPos;
         isMoving = false;
+
+        CheckForEncounters();
+    }
+
+    private void CheckForEncounters()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer))
+        {
+            if (UnityEngine.Random.Range(1, 101) <= 10)
+            {
+                Debug.Log("Nasiel som pokemona");
+            }
+        }
     }
 
     private bool IsWalkable(Vector3 targetPos)
