@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new pokemon")]
 public class PokemonBase : ScriptableObject
 {
-    [SerializeField] string name;
+    [SerializeField] string pkmName;
 
     [TextArea][SerializeField] string description;
 
@@ -22,9 +22,11 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spDefense;
     [SerializeField] int speed;
 
-    public string Name
+    [SerializeField] List<LearnableMove> learnableMoves;
+
+    public string PkmName
     {
-        get { return name; }
+        get { return pkmName; }
     }
     
     public string Description
@@ -82,6 +84,28 @@ public class PokemonBase : ScriptableObject
             get { return speed; }
     }
 
+    public List<LearnableMove> LearnableMoves
+    {
+        get { return learnableMoves; }
+    }
+}
+
+
+[System.Serializable]
+public class LearnableMove
+{
+    [SerializeField] MoveBase moveBase;
+    [SerializeField] int level;
+
+    public MoveBase MoveBase
+    {
+        get { return moveBase; }
+    }
+
+    public int Level
+    {
+        get { return level; }
+    }
 
 }
 
