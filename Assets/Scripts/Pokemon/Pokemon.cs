@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Pokemon
 {
-    PokemonBase pkmBase;
-    int level;
+    public PokemonBase Base { get; set; }
+
+    public int Level { get; set; }
 
     public int HP { get; set; }
 
@@ -13,14 +14,14 @@ public class Pokemon
 
     public Pokemon(PokemonBase pBase, int pLevel)
     {
-        pkmBase = pBase;
-        level = pLevel;
-        HP = pkmBase.MaxHp;
+        Base = pBase;
+        Level = pLevel;
+        HP = MaxHp;
 
         Moves = new List<Move>();
-        foreach (var move in pkmBase.LearnableMoves)
+        foreach (var move in Base.LearnableMoves)
         {
-            if (move.Level <= level)
+            if (move.Level <= Level)
                 Moves.Add(new Move(move.MoveBase));
 
             if (Moves.Count >= 4)
@@ -30,31 +31,31 @@ public class Pokemon
 
     public int Attack
     {
-        get { return Mathf.FloorToInt((pkmBase.Attack * level) / 100f) + 5; }
+        get { return Mathf.FloorToInt((Base.Attack * Level) / 100f) + 5; }
     }
 
     public int Defense
     {
-        get { return Mathf.FloorToInt((pkmBase.Defense * level) / 100f) + 5; }
+        get { return Mathf.FloorToInt((Base.Defense * Level) / 100f) + 5; }
     }
 
     public int SpAttack
     {
-        get { return Mathf.FloorToInt((pkmBase.SpAttack * level) / 100f) + 5; }
+        get { return Mathf.FloorToInt((Base.SpAttack * Level) / 100f) + 5; }
     }
 
     public int SpDefense
     {
-        get { return Mathf.FloorToInt((pkmBase.SpDefense * level) / 100f) + 5; }
+        get { return Mathf.FloorToInt((Base.SpDefense * Level) / 100f) + 5; }
     }
 
     public int Speed
     {
-        get { return Mathf.FloorToInt((pkmBase.Speed * level) / 100f) + 5; }
+        get { return Mathf.FloorToInt((Base.Speed * Level) / 100f) + 5; }
     }
 
     public int MaxHp
     {
-        get { return Mathf.FloorToInt((pkmBase.MaxHp * level) / 100f) + 10; }
+        get { return Mathf.FloorToInt((Base.MaxHp * Level) / 100f) + 10; }
     }
 }
