@@ -3307,6 +3307,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -26411,13 +26423,13 @@ TextureImporter:
       Overworld_817: -2715854885519133993
       Overworld_1036: 2572722799497503140
       Overworld_502: 9017138880218121653
+      Overworld_303: 2604222589531987136
       Overworld_446: -7360851500141600946
-      Overworld_1052: 5859061253907293290
       Overworld_452: -4875744817803963820
       Overworld_866: 8928618290579301758
-      Overworld_317: -1088169713482306408
+      Overworld_1052: 5859061253907293290
       Overworld_396: 8707285183721296483
-      Overworld_303: 2604222589531987136
+      Overworld_317: -1088169713482306408
       Overworld_569: 6818533698137383071
       Overworld_647: 3244827369187313840
       Overworld_421: 8860831932780837911
@@ -26519,8 +26531,8 @@ TextureImporter:
       Overworld_101: 4630787559964711824
       Overworld_884: 2789283966239145305
       Overworld_367: 2609072988545560573
-      Overworld_60: 80637319280397245
       Overworld_408: -375774214369927839
+      Overworld_60: 80637319280397245
       Overworld_1056: -5566080000555079149
       Overworld_294: 1537400597532574155
       Overworld_970: -3328804424743113820
