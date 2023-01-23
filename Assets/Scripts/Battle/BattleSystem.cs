@@ -52,6 +52,52 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
+    IEnumerator PerformPlayerMove()
+    {
+        state = BattleState.Busy;
+
+        var move = playerUnit.Pokemon.Moves[currentMove];
+        bool isFainted;
+
+        yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.PkmName} used {move.Base.MoveName}");
+        yield return new WaitForSeconds(1f);
+
+        isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        yield return enemyHud.UpdateHP();
+
+        if (isFainted)
+        {
+            yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.PkmName} fainted");
+        }
+        else
+        {
+            StartCoroutine(EnemyMove());
+        }
+    }
+
+    IEnumerator EnemyMove()
+    {
+        state = BattleState.EnemyMove;
+
+        var move = enemyUnit.Pokemon.GetRandomMove();
+        bool isFainted;
+
+        yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.PkmName} used {move.Base.MoveName}");
+        yield return new WaitForSeconds(1f);
+
+        isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
+        yield return playerHud.UpdateHP();
+
+        if (isFainted)
+        {
+            yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.PkmName} fainted");
+        }
+        else
+        {
+            PlayerAction();
+        }
+    }
+
     private void Update()
     {
         if (state == BattleState.PlayerAction)
@@ -64,7 +110,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private void HandleMoveSelection()
+    void HandleMoveSelection()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))       
         {
@@ -95,7 +141,14 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
-        dialogBox.UpdatMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);   
+        dialogBox.UpdatMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            dialogBox.EnableMoveSelector(false);
+            dialogBox.EnableDialogText(true);
+            StartCoroutine(PerformPlayerMove());
+        }
     }
 
     void HandleActionSelection()
