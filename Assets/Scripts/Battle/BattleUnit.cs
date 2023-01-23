@@ -19,7 +19,8 @@ public class BattleUnit : MonoBehaviour
     private void Awake()
     {
         image = GetComponent<Image>();
-        originalPos = image.transform.localPosition;
+        //originalPos = image.transform.localPosition;
+        originalPos = image.rectTransform.localPosition;
         originalColor = image.color;
     }
     public void Setup()
