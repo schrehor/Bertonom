@@ -32,7 +32,6 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMovesNames(playerUnit.Pokemon.Moves);
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.PkmName} appeared.");
-        yield return new WaitForSeconds(1f);
 
         PlayerAction();
     }
@@ -57,15 +56,14 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.Busy;
 
         var move = playerUnit.Pokemon.Moves[currentMove];
-        bool isFainted;
 
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.PkmName} used {move.Base.MoveName}");
-        yield return new WaitForSeconds(1f);
 
-        isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+        var damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
         yield return enemyHud.UpdateHP();
+        yield return ShowDamageDetails(damageDetails);
 
-        if (isFainted)
+        if (damageDetails.Fainted)
         {
             yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.PkmName} fainted");
         }
@@ -80,21 +78,41 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.EnemyMove;
 
         var move = enemyUnit.Pokemon.GetRandomMove();
-        bool isFainted;
 
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.PkmName} used {move.Base.MoveName}");
-        yield return new WaitForSeconds(1f);
 
-        isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
+        var damageDetails = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
         yield return playerHud.UpdateHP();
+        yield return ShowDamageDetails(damageDetails);
 
-        if (isFainted)
+        if (damageDetails.Fainted)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.PkmName} fainted");
         }
         else
         {
             PlayerAction();
+        }
+    }
+
+    IEnumerator ShowDamageDetails(DamageDetails damageDetails)
+    {
+        if (damageDetails.Critical > 1f)
+        {
+            yield return dialogBox.TypeDialog("A critical hit!");
+        }
+
+        if (damageDetails.TypeEffectivness == 2f)
+        {
+            yield return dialogBox.TypeDialog("It's super effective!");
+        }
+        else if (damageDetails.TypeEffectivness == 0.5f)
+        {
+            yield return dialogBox.TypeDialog("It's not very effective!");
+        }
+        else if (damageDetails.TypeEffectivness == 0)
+        {
+            yield return dialogBox.TypeDialog($"It has no effect!");
         }
     }
 
