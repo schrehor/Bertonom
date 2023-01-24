@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask solidObjectLayer;
     public LayerMask grassLayer;
 
+    public event Action OnEncountered;
+
     private bool isMoving;
     private Vector2 input;
     private Animator animator;
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    public void HandleUpdate()
     {
         if (!isMoving)
         {
@@ -67,14 +69,15 @@ public class PlayerController : MonoBehaviour
         {
             if (UnityEngine.Random.Range(1, 101) <= 10)
             {
-                Debug.Log("Nasiel som pokemona");
+                animator.SetBool("isMoving", false);
+                OnEncountered();
             }
         }
     }
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectLayer))
+        if (Physics2D.OverlapCircle(targetPos, 0.15f, solidObjectLayer))
         {
             return false;
         }
