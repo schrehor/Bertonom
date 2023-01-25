@@ -7,6 +7,7 @@ public class PokemonParty : MonoBehaviour
 {
     [SerializeField] List<Pokemon> pokemons;
 
+    public List<Pokemon> Pokemons { get { return pokemons; } }
 
     private void Start()
     {
