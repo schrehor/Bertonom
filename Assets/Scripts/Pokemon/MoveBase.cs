@@ -11,10 +11,12 @@ public class MoveBase : ScriptableObject
     [SerializeField] int power;
     [SerializeField] int accuracy;
     [SerializeField] int pp;
+    [SerializeField] bool isSpecial;
+
 
     public string MoveName
     {
-        get { return moveName; }    
+        get { return moveName; }
     }
 
     public string Description
@@ -41,4 +43,10 @@ public class MoveBase : ScriptableObject
     {
         get { return pp; }
     }
+
+    public bool IsSpecial
+    {
+        get { return isSpecial; }
+    }
+
 }
