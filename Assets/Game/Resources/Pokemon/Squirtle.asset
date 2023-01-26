@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 432216fd18b6dd04ea37a95cd5512176, type: 3}
-  m_Name: Bulbasaur
+  m_Name: Squirtle
   m_EditorClassIdentifier: 
-  pkmName: Bulbasaur
+  pkmName: Squirtle
   description: 
-  frontSprite: {fileID: 21300000, guid: 0f37bf3cf5680a64d863b5f155b2a597, type: 3}
-  backSprite: {fileID: 21300000, guid: aacaae602a38f884ab9e02e43de3736d, type: 3}
-  type1: 5
-  type2: 8
-  maxHp: 45
-  attack: 49
-  defense: 49
-  spAttack: 65
-  spDefense: 65
-  speed: 45
+  frontSprite: {fileID: 21300000, guid: 818cf159951cf9a4e8e810b2bbab4096, type: 3}
+  backSprite: {fileID: 21300000, guid: 18fc6e8e3f72b154fba88f358748be28, type: 3}
+  type1: 3
+  type2: 0
+  maxHp: 44
+  attack: 48
+  defense: 65
+  spAttack: 50
+  spDefense: 64
+  speed: 53
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: cac78986d62cb9449a613a081745a22a, type: 2}
     level: 1
   - moveBase: {fileID: 11400000, guid: 4fd28cfcf886d4549a04a00b4d564c7e, type: 2}
     level: 5
-  - moveBase: {fileID: 11400000, guid: 7a72056c580a0c3419636909937a7071, type: 2}
+  - moveBase: {fileID: 11400000, guid: 45d20667e4d82be42b18c5e361a47406, type: 2}
     level: 7
