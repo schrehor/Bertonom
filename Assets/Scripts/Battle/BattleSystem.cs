@@ -70,6 +70,7 @@ public class BattleSystem : MonoBehaviour
         var move = playerUnit.Pokemon.Moves[currentMove];
         yield return RunMove(playerUnit, enemyUnit, move);
 
+        //Checks if the state was changed in RunMove()
         if (state == BattleState.PerformMove)
         {
             StartCoroutine(EnemyMove());
@@ -82,6 +83,7 @@ public class BattleSystem : MonoBehaviour
         var move = enemyUnit.Pokemon.GetRandomMove();
         yield return RunMove(enemyUnit, playerUnit, move);
 
+        //Checks if the state was changed in RunMove()
         if (state == BattleState.PerformMove)
         {
             ActionSelection();
@@ -99,11 +101,30 @@ public class BattleSystem : MonoBehaviour
 
         targetUnit.PlayHitAnimation();
 
-        var damageDetails = targetUnit.Pokemon.TakeDamage(move, sourceUnit.Pokemon);
-        yield return targetUnit.Hud.UpdateHP();
-        yield return ShowDamageDetails(damageDetails);
+        if (move.Base.Category == MoveCategory.Status) 
+        {
+            var effects = move.Base.Effects;
 
-        if (damageDetails.Fainted)
+            if (effects.Boosts != null)
+            {
+                if (move.Base.Target == MoveTarget.Self)
+                {
+                    sourceUnit.Pokemon.ApplyBoost(effects.Boosts);
+                }
+                else
+                {
+                    targetUnit.Pokemon.ApplyBoost(effects.Boosts);
+                }
+            }
+        }
+        else
+        {
+            var damageDetails = targetUnit.Pokemon.TakeDamage(move, sourceUnit.Pokemon);
+            yield return targetUnit.Hud.UpdateHP();
+            yield return ShowDamageDetails(damageDetails);
+        }
+
+        if (targetUnit.Pokemon.HP <= 0)
         {
             yield return dialogBox.TypeDialog($"{targetUnit.Pokemon.Base.PkmName} fainted");
             targetUnit.PlayFaintAnimation();
