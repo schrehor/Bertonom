@@ -46,6 +46,7 @@ public class BattleSystem : MonoBehaviour
     void BattleOver(bool won)
     {
         state = BattleState.BattleOver;
+        playerParty.Pokemons.ForEach(p => p.OnBattleOver());
         OnBattleOver(won);
     }
 
@@ -116,6 +117,9 @@ public class BattleSystem : MonoBehaviour
                     targetUnit.Pokemon.ApplyBoost(effects.Boosts);
                 }
             }
+
+            yield return ShowStatusChanges(sourceUnit.Pokemon);
+            yield return ShowStatusChanges(targetUnit.Pokemon);
         }
         else
         {
@@ -132,6 +136,15 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(2f);
 
             chechForBattleOver(targetUnit);
+        }
+    }
+
+    IEnumerator ShowStatusChanges(Pokemon pokemon)
+    {
+        while (pokemon.StatusChanges.Count > 0)
+        {
+            var message = pokemon.StatusChanges.Dequeue();
+            yield return dialogBox.TypeDialog(message);
         }
     }
 
