@@ -16,11 +16,12 @@ public class Pokemon
     }
 
     public int HP { get; set; }
-
     public List<Move> Moves { get; set; }
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
     public Queue<string> StatusChanges { get; private set; } = new Queue<string>(); 
+    public Condition Status { get; private set; }
+    public bool HpChange { get; set; }
 
     public void Init()
     {
@@ -163,22 +164,34 @@ public class Pokemon
         float defenseCalc = attackCalc * move.Base.Power * ((float)attack / defense) + 2;
         int damage = Mathf.FloorToInt(defenseCalc * modifiers);
 
-        HP -= damage;
-        if (HP <= 0)
-        {
-            HP = 0;
-            damageDetails.Fainted = true;
-        }
+        UpdateHP(damage);
 
         return damageDetails;
     }
 
+    public void UpdateHP(int damage)
+    {
+        HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+        HpChange = true;
+    }
+    
+    public void SetStatus(ConditionID conditionID)
+    {
+        Status = ConditionsDB.Conditions[conditionID];
+        StatusChanges.Enqueue($"{Base.PkmName} {Status.StartMessage}");
+    }
+    
     public Move GetRandomMove()
     {
         int random = Random.Range(0, Moves.Count);
         return Moves[random];
     }
 
+    public void OnAfterTurn()
+    {
+        Status?.OnAfterTurn?.Invoke(this);
+    }
+    
     public void OnBattleOver()
     {
         ResetStatBoost();

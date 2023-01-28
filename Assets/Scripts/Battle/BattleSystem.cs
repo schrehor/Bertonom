@@ -134,12 +134,42 @@ public class BattleSystem : MonoBehaviour
 
             ChechForBattleOver(targetUnit);
         }
-    }
+        
+        // statuses will hurt pokemon after turn
+        sourceUnit.Pokemon.OnAfterTurn();
+        yield return ShowStatusChanges(sourceUnit.Pokemon);
+        yield return sourceUnit.Hud.UpdateHP();
+        
+        // check if status damage is fatal
+        if (sourceUnit.Pokemon.HP <= 0)
+        {
+            yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.PkmName} fainted");
+            sourceUnit.PlayFaintAnimation();
+
+            yield return new WaitForSeconds(2f);
+
+            ChechForBattleOver(sourceUnit);
+        }
+    } 
+    
+    // IEnumerable CheckFainted(BattleUnit unit)
+    // {
+    //     if (unit.Pokemon.HP <= 0)
+    //     {
+    //         yield return dialogBox.TypeDialog($"{unit.Pokemon.Base.PkmName} fainted");
+    //         unit.PlayFaintAnimation();
+    //
+    //         yield return new WaitForSeconds(2f);
+    //
+    //         ChechForBattleOver(unit);
+    //     }
+    // }
 
     IEnumerator RunMoveEffects(Move move, Pokemon source, Pokemon target)
     {
         var effects = move.Base.Effects;
 
+        //Stat boosting
         if (effects.Boosts != null)
         {
             if (move.Base.Target == MoveTarget.Self)
@@ -152,6 +182,12 @@ public class BattleSystem : MonoBehaviour
             }
         }
 
+        //Status conditions
+        if (effects.Status != ConditionID.none)
+        {
+            target.SetStatus(effects.Status);    
+        }
+        
         yield return ShowStatusChanges(source);
         yield return ShowStatusChanges(target);
     }
