@@ -393,7 +393,9 @@ public class BattleSystem : MonoBehaviour
     IEnumerator SwitchPokemon(Pokemon newPokemon)
     {
         bool currentPokemonFainted = true;
-        
+        playerUnit.Pokemon.CureVolatileStatus();
+
+
         if (playerUnit.Pokemon.HP > 0)
         {
             currentPokemonFainted = false;
