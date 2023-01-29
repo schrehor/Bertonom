@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class ConditionsDB
 {
+    public static void Init() 
+    {
+        foreach (var kvp in Conditions)
+        {
+            var conditionId = kvp.Key;
+            var condition = kvp.Value;
+
+            condition.Id = conditionId;
+        }
+    }
     public static Dictionary<ConditionID, Condition> Conditions { get; set; } =
         new Dictionary<ConditionID, Condition>()
         {
@@ -89,14 +99,50 @@ public class ConditionsDB
                         if (pokemon.StatusTime <= 0)
                         {
                             pokemon.CureStatus();
-                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} woke up");
+                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} woke up!");
                             return true;
                         }
                         pokemon.StatusTime--;
                         pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} is sleeping");
                         return false;
                     }
-                    
+                }
+            },
+            {
+                ConditionID.confusion,
+                new Condition()
+                {
+                    Name = "Confusion",
+                    StartMessage = "has been confused",
+                    OnStart = pokemon =>
+                    {
+                        // confused for 1-4 rounds
+                        pokemon.VolatileStatusTime = Random.Range(1, 5);
+                        Debug.Log($"Will be confused for {pokemon.VolatileStatusTime} moves");
+                    },
+                    OnBeforeMove = pokemon =>
+                    {
+                        if (pokemon.VolatileStatusTime <= 0)
+                        {
+                            pokemon.CureVolatileStatus();
+                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} kicked out of confusion!");
+                            return true;
+                        }
+                        pokemon.VolatileStatusTime--;
+                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} is confused");
+
+                        // 50% chance to do a move
+                        if (Random.Range(1, 3) == 1)
+                        {
+                            return true;
+                        }
+
+                        // hurt by confusion
+                        pokemon.UpdateHP(pokemon.MaxHp / 8);
+                        pokemon.StatusChanges.Enqueue("It hurt itself due to confusion");
+                        return false;
+                    }
+
                 }
             }
         };
@@ -104,5 +150,5 @@ public class ConditionsDB
 
 public enum ConditionID
 {
-    none, psn, brn, slp, par, frz
+    none, psn, brn, slp, par, frz, confusion
 }

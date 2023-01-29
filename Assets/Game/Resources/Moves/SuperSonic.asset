@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a5c6d4ba6fa0bc4db660bbc0f4d5730, type: 3}
-  m_Name: Sing
+  m_Name: SuperSonic
   m_EditorClassIdentifier: 
-  moveName: Sing
+  moveName: Super Sonic
   description: 
   type: 1
   power: 0
@@ -21,5 +21,6 @@ MonoBehaviour:
   category: 2
   effects:
     boosts: []
-    status: 3
+    status: 0
+    volatileStatus: 6
   target: 0
