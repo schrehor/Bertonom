@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a5c6d4ba6fa0bc4db660bbc0f4d5730, type: 3}
-  m_Name: Scratch
+  m_Name: QuickAttack
   m_EditorClassIdentifier: 
-  moveName: Scratch
+  moveName: Quick Attack
   description: 
   type: 1
   power: 40
   accuracy: 100
   alwaysHits: 0
-  pp: 20
-  priority: 0
+  pp: 25
+  priority: 1
   category: 0
   effects:
     boosts: []

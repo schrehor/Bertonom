@@ -83,6 +83,19 @@ public class BattleDialogBox : MonoBehaviour
 
         ppText.text = $"PP {move.PP}/{move.Base.PP}";
         typeText.text = move.Base.Type.ToString();
+
+        if (move.PP == 0)
+        {
+            ppText.color = Color.red;
+        }
+        else if (move.PP <= move.Base.PP / 2)
+        {
+            ppText.color = new Color(1f, 0.647f, 0f);
+        }
+        else
+        {
+            ppText.color = Color.black;
+        }
     }
 
     public void SetMovesNames(List<Move> moves)
