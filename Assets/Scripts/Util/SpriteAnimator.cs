@@ -20,9 +20,9 @@ public class SpriteAnimator
 
     public void Start()
     {
-        currentFrame = 0;
+        currentFrame = 1;
         timer = 0f;
-        spriteRenderer.sprite = frames[0];
+        spriteRenderer.sprite = frames[1];
     }
 
     public void HandleUpdate()
