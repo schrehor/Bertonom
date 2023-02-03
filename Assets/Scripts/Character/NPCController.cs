@@ -51,7 +51,6 @@ public class NPCController : MonoBehaviour, Interactable
 
         character.HandleUpdate();
     }
-
     IEnumerator Walk()
     {
         state = NPCState.Walking;
@@ -67,6 +66,39 @@ public class NPCController : MonoBehaviour, Interactable
 
         state = NPCState.Idle;
 
+    }
+
+    [ContextMenu("Show Path")]
+    void ShowPath()
+    {
+        var pos = new Vector2(transform.position.x, transform.position.y);
+        var index = 0;
+
+        var colours = new List<Color>()
+        {
+            Color.red,
+            Color.green,
+            Color.blue
+        };
+
+        foreach (Vector2 path in movementPattern)
+        {
+            Vector2 newPosRef = movementPattern[index];
+
+            if (newPosRef.x == 0)
+            {
+                newPosRef.y *= 2f;
+            }
+            else if (newPosRef.y == 0)
+            {
+                newPosRef.x *= 2f;
+            }
+
+            Debug.DrawLine(pos, pos + newPosRef, colours[index % 3], 2f);
+
+            index += 1;
+            pos += newPosRef;
+        }
     }
 }
 
