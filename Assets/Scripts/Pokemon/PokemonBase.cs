@@ -141,7 +141,7 @@ public enum Stat
     SpDefense,
     Speed,
 
-    // not actualk stats, used to boost move accuracy
+    // Not actualk stats, used to boost move accuracy
     Accuracy,
     Evasion
 }

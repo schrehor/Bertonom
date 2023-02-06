@@ -79,7 +79,7 @@ public class BattleSystem : MonoBehaviour
             int playerMovePriority = playerUnit.Pokemon.CurrentMove.Base.Priority;
             int enemyMovePriority = enemyUnit.Pokemon.CurrentMove.Base.Priority;
 
-            // check who goes first
+            // Check who goes first
             bool playerGoesFirst = true;
             if (enemyMovePriority > playerMovePriority)
             {
@@ -88,7 +88,6 @@ public class BattleSystem : MonoBehaviour
             else if (enemyMovePriority == playerMovePriority)
             {
                playerGoesFirst = playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed;
-
             }
             
             var firstUnit = playerGoesFirst ? playerUnit : enemyUnit;
@@ -96,7 +95,7 @@ public class BattleSystem : MonoBehaviour
 
             var secondPokemon = secondUnit.Pokemon;
 
-            // first turn
+            // First turn
             yield return RunMove(firstUnit, secondUnit, firstUnit.Pokemon.CurrentMove);
             yield return RunAfterTurn(firstUnit);
             if (state == BattleState.BattleOver)
@@ -106,7 +105,7 @@ public class BattleSystem : MonoBehaviour
 
             if (secondPokemon.HP > 0)
             {
-                // second turn
+                // Second turn
                 yield return RunMove(secondUnit, firstUnit, secondUnit.Pokemon.CurrentMove);
                 yield return RunAfterTurn(secondUnit);
                 if (state == BattleState.BattleOver)
@@ -253,12 +252,12 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitUntil(() => state == BattleState.RunningTurn);
 
-        // statuses will hurt pokemon after turn
+        // Statuses will hurt pokemon after turn
         sourceUnit.Pokemon.OnAfterTurn();
         yield return ShowStatusChanges(sourceUnit.Pokemon);
         yield return sourceUnit.Hud.UpdateHP();
 
-        // check if status damage is fatal
+        // Check if status damage is fatal
         if (sourceUnit.Pokemon.HP <= 0)
         {
             yield return dialogBox.TypeDialog($"{sourceUnit.Pokemon.Base.PkmName} fainted");

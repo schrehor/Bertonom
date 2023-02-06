@@ -10,10 +10,10 @@ public class PartyMemberUI : MonoBehaviour
     [SerializeField] HPbar hpBar;
     [SerializeField] Color highlightedColor;
 
-    Pokemon pokemon1;
+    Pokemon _pokemon;
     public void SetData(Pokemon pokemon)
     {
-        pokemon1 = pokemon;
+        _pokemon = pokemon;
 
         nameText.text = pokemon.Base.PkmName;
         levelText.text = "Lvl " + pokemon.Level;

@@ -36,7 +36,7 @@ public class Character : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
         }
-        transform.position = targetPos;
+        //transform.position = targetPos;
         IsMoving = false;
 
         OnMoveOver?.Invoke();

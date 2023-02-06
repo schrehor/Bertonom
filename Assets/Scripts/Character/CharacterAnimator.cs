@@ -9,12 +9,12 @@ public class CharacterAnimator : MonoBehaviour
     [SerializeField] List<Sprite> walkRightSprites;
     [SerializeField] List<Sprite> walkLeftSprites;
 
-    // parameters
+    // Parameters
     public float MoveX { get; set; }
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
 
-    // states
+    // States
     SpriteAnimator walkDownAnim;
     SpriteAnimator walkUpAnim;
     SpriteAnimator walkRightAnim;
@@ -23,7 +23,7 @@ public class CharacterAnimator : MonoBehaviour
     SpriteAnimator currentAnim;
     bool wasPrevMoving;
 
-    // references
+    // References
     SpriteRenderer spriteRenderer;
 
     private void Start()
