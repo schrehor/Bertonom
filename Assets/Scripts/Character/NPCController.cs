@@ -51,6 +51,7 @@ public class NPCController : MonoBehaviour, Interactable
 
         character.HandleUpdate();
     }
+
     IEnumerator Walk()
     {
         state = NPCState.Walking;
