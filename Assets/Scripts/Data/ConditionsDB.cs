@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ConditionsDB
 {
+    /// <summary>
+    /// Setter for the <c>Id</c> parameter of the class <c>Condition</c>
+    /// </summary>
     public static void Init() 
     {
         foreach (var kvp in Conditions)
@@ -14,6 +17,10 @@ public class ConditionsDB
             condition.Id = conditionId;
         }
     }
+
+    /// <summary>
+    /// A dictionary with all the possible conditions you can have in a Pokemon game with their effects. The key is an enum <c>ConditionID</c>.
+    /// </summary>
     public static Dictionary<ConditionID, Condition> Conditions { get; set; } =
         new Dictionary<ConditionID, Condition>()
         {
