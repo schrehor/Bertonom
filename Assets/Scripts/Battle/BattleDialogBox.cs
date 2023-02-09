@@ -23,11 +23,19 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] Text yesText;
     [SerializeField] Text noText;
 
+    /// <summary>
+    /// Instantly writes given <c>dialog</c>.
+    /// </summary>
+    /// <param name="dialog">Dialog</param>
     public void SetDialog(string dialog)
     { 
         dialogText.text = dialog; 
     }
 
+    /// <summary>
+    /// Types the given <c>dialog</c> letter by letter.
+    /// </summary>
+    /// <param name="dialog">Dialog</param>
     public IEnumerator TypeDialog(string dialog)
     {
         dialogText.text = "";
@@ -61,6 +69,10 @@ public class BattleDialogBox : MonoBehaviour
         choiceBox.SetActive(enabled);
     }
 
+    /// <summary>
+    /// Highlights text in Action selection
+    /// </summary>
+    /// <param name="selectedAction">Number representing the selection in order they were made</param>
     public void UpdateActionSelection(int selectedAction)
     {
         for (int i = 0; i < actionText.Count; i++)
@@ -76,6 +88,11 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Highlights text in Move selection
+    /// </summary>
+    /// <param name="selectedMove">Number representing the selected move</param>
+    /// <param name="move">Move that is selected</param>
     public void UpdatMoveSelection(int selectedMove, Move move)
     {
         for (int i = 0; i < moveText.Count; i++)
@@ -107,6 +124,10 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays the names of moves the Pokemon has.
+    /// </summary>
+    /// <param name="moves">List of moves the Pokemon has</param>
     public void SetMovesNames(List<Move> moves)
     {
         for (int i = 0; i < moveText.Count; i++)
@@ -122,6 +143,10 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Highlights text in the Choice box.
+    /// </summary>
+    /// <param name="yesSelector">A boolean representing either yes or no choice</param>
     public void UpdateChoiceBox(bool yesSelector)
     {
         if (yesSelector)
