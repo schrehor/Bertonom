@@ -34,6 +34,8 @@ public class BattleSystem : MonoBehaviour
     PokemonParty trainerParty;
     Pokemon wildPokemon;
 
+    int escapeAttempts;
+
     public void StartBattle(PokemonParty playerParty, Pokemon wildPokemon)
     {
         isTrainerBattle = false;
@@ -99,7 +101,8 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"Go {playerPokemon.Base.PkmName}!");
             dialogBox.SetMovesNames(playerUnit.Pokemon.Moves);
         }
-        
+
+        escapeAttempts = 0;
         partyScreen.Init();
              
         ActionSelection();
@@ -186,6 +189,10 @@ public class BattleSystem : MonoBehaviour
             {
                 dialogBox.EnableActionSelector(false);
                 yield return ThrowPokeball();
+            }
+            else if (playerAction == BattleAction.Run)
+            {
+                yield return TryToEscape();
             }
 
             var enemyMove = enemyUnit.Pokemon.GetRandomMove();
@@ -534,6 +541,7 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 3)
             {
                 // Run
+                StartCoroutine(RunTurns(BattleAction.Run));
             }
         }
     }
@@ -767,5 +775,42 @@ public class BattleSystem : MonoBehaviour
         }
 
         return shakeCount;
+    }
+
+    IEnumerator TryToEscape()
+    {
+        state = BattleState.Busy;
+
+        if (isTrainerBattle)
+        {
+            yield return dialogBox.TypeDialog($"You cannot run from trainer battles!");
+            state = BattleState.RunningTurn;
+            yield break;
+        }
+
+        int playerSpeed = playerUnit.Pokemon.Speed;
+        int enemySpeed = enemyUnit.Pokemon.Speed;
+
+        if (playerSpeed > enemySpeed)
+        {
+            yield return dialogBox.TypeDialog($"Run away safely!");
+            BattleOver(true);
+        }
+        else
+        {
+            float f = (playerSpeed * 128) / enemySpeed + 30 * ++escapeAttempts;
+            f %= 256;
+
+            if (UnityEngine.Random.Range(0, 256) < f)
+            {
+                yield return dialogBox.TypeDialog($"Run away safely!");
+                BattleOver(true);
+            }
+            else
+            {
+                yield return dialogBox.TypeDialog($"Can't escape!");
+                state = BattleState.RunningTurn;
+            }
+        }
     }
 }
