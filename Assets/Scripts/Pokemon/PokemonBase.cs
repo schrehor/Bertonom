@@ -22,9 +22,26 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int spDefense;
     [SerializeField] int speed;
 
+    [SerializeField] int expYield;
+    [SerializeField] GrowthRate growthRate;
+
     [SerializeField] int catchRate = 255;
 
     [SerializeField] List<LearnableMove> learnableMoves;
+
+    public int GetExpForLevel(int level)
+    {
+        if (growthRate == GrowthRate.Fast)
+        {
+            return 4 * (int)System.Math.Pow(level, 3) / 5;
+        }
+        else if (growthRate == GrowthRate.MediumFast)
+        {
+            return (int)System.Math.Pow(level, 3);
+        }
+
+        return -1;
+    }
 
     public string PkmName
     {
@@ -92,6 +109,10 @@ public class PokemonBase : ScriptableObject
     }
 
     public int CatchRate => catchRate;
+
+    public int ExpYield => expYield;
+
+    public GrowthRate GrowthRate => growthRate;
 }
 
 
@@ -136,6 +157,12 @@ public enum PokemonType
     Fairy
 }
 
+public enum GrowthRate
+{
+    // TODO - implement other growth rates
+    Fast, MediumFast, MediumSlow, Slow
+}
+
 
 public enum Stat
 {
@@ -145,7 +172,7 @@ public enum Stat
     SpDefense,
     Speed,
 
-    // Not actualk stats, used to boost move accuracy
+    // Not actual stats, used to boost move accuracy
     Accuracy,
     Evasion
 }
