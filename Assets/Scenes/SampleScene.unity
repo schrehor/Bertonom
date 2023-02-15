@@ -9443,10 +9443,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemons:
-  - _base: {fileID: 11400000, guid: e6ff89051df97b347b50e680666e7878, type: 2}
-    _level: 8
-  - _base: {fileID: 11400000, guid: e6ff89051df97b347b50e680666e7878, type: 2}
-    _level: 8
+  - _base: {fileID: 11400000, guid: d5e03d98aa5497b4c970c37c884cbdc8, type: 2}
+    _level: 10
+  - _base: {fileID: 11400000, guid: d5e03d98aa5497b4c970c37c884cbdc8, type: 2}
+    _level: 12
 --- !u!1001 &1571298356
 PrefabInstance:
   m_ObjectHideFlags: 0
