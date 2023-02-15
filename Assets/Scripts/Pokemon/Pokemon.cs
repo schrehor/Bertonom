@@ -131,6 +131,17 @@ public class Pokemon
         }
     }
 
+    public bool CheckForLevelUp()
+    {
+        if (Exp > Base.GetExpForLevel(_level + 1))
+        {
+            _level++;
+            return true;
+        }
+
+        return false;
+    }
+
     public int Attack
     {
         get { return GetStat(Stat.Attack); }
