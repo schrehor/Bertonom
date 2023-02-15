@@ -33,14 +33,42 @@ public class PokemonBase : ScriptableObject
     {
         if (growthRate == GrowthRate.Fast)
         {
-            return 4 * (int)System.Math.Pow(level, 3) / 5;
+            return Mathf.FloorToInt(4 * (int)System.Math.Pow(level, 3) / 5f);
         }
         else if (growthRate == GrowthRate.MediumFast)
         {
             return (int)System.Math.Pow(level, 3);
         }
+        else if (growthRate == GrowthRate.MediumSlow)
+        {
+            return Mathf.FloorToInt(6 * (int)System.Math.Pow(level, 3) / 5f) - 15 * (int)System.Math.Pow(level, 2) + 100 * level - 140;
+        }
+        else if (growthRate == GrowthRate.Slow)
+        {
+            return Mathf.FloorToInt(5 * (int)System.Math.Pow(level, 3) / 4f);
+        }
+        else if (growthRate == GrowthRate.Fluctuating)
+        {
+            return GetFluctuating(level);
+        }
 
         return -1;
+    }
+
+    public int GetFluctuating(int level)
+    {
+        if (level <= 15)
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((Mathf.Floor((level + 1) / 3) + 24) / 50));
+        }
+        else if (level >= 15 && level < 36)
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((level + 14) / 50));
+        }
+        else
+        {
+            return Mathf.FloorToInt(Mathf.Pow(level, 3) * ((Mathf.Floor(level / 2) + 32) / 50));
+        }
     }
 
     public string PkmName
@@ -159,8 +187,7 @@ public enum PokemonType
 
 public enum GrowthRate
 {
-    // TODO - implement other growth rates
-    Fast, MediumFast, MediumSlow, Slow
+    Fast, MediumFast, MediumSlow, Slow, Fluctuating
 }
 
 
