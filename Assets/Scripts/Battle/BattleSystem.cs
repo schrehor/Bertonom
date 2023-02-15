@@ -399,6 +399,7 @@ public class BattleSystem : MonoBehaviour
             while (playerUnit.Pokemon.CheckForLevelUp())
             {
                 playerUnit.Hud.SetLevel();
+                playerUnit.Pokemon.BoostStatsAfterLevelUp();
                 yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.PkmName} grew to level {playerUnit.Pokemon.Level}");
 
                 yield return playerUnit.Hud.SetExpSmooth(true);

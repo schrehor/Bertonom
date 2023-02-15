@@ -142,6 +142,15 @@ public class Pokemon
         return false;
     }
 
+    public void BoostStatsAfterLevelUp()
+    {
+        var oldMaxHp = MaxHp;
+        CalculateStats();
+        var diff = MaxHp - oldMaxHp;
+
+        UpdateHP(-diff);
+    }
+
     public int Attack
     {
         get { return GetStat(Stat.Attack); }
