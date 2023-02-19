@@ -12,6 +12,12 @@ public class Portal : MonoBehaviour, IPlayerTriggerable
     [SerializeField] Transform spawnPoint;
 
     PlayerController player;
+    Fader fader;
+
+    private void Start()
+    {
+        fader = FindObjectOfType<Fader>();
+    }
 
     public void OnPlayerTriggered(PlayerController player)
     {
@@ -23,13 +29,14 @@ public class Portal : MonoBehaviour, IPlayerTriggerable
     {
         DontDestroyOnLoad(gameObject);
         GameController.Instance.PauseGame(true);
+        yield return fader.FadeIn(0.5f);
 
         yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
         var destPortal = FindObjectsOfType<Portal>().First(x => x != this && x.destPortal == this.destPortal);
         player.Character.SetPositionAndSnapToTile(destPortal.SpawnPoint.position);
 
-
+        yield return fader.FadeOut(0.5f);
         GameController.Instance.PauseGame(false);
         Destroy(gameObject);
     }
