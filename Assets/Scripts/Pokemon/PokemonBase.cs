@@ -73,7 +73,7 @@ public class PokemonBase : ScriptableObject
         }
     }
 
-    public string PkmName
+    public string Name
     {
         get { return pkmName; }
     }

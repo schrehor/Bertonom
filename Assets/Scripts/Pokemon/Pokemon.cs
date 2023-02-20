@@ -41,6 +41,7 @@ public class Pokemon
 
     public void Init()
     {
+        // Generate moves
         Moves = new List<Move>();
         foreach (var move in Base.LearnableMoves)
         {
@@ -61,6 +62,44 @@ public class Pokemon
         ResetStatBoost();
         Status = null;
         VolatileStatus = null;
+    }
+
+    public Pokemon(PokemonSaveData saveData)
+    {
+        _base = PokemonDB.GetPokemonByName(saveData.name);
+        HP = saveData.hp;
+        _level = saveData.level;
+        Exp = saveData.exp;
+
+        if (saveData.statusId != null)
+        {
+            Status = ConditionsDB.Conditions[saveData.statusId.Value];
+        }
+        else
+        {
+            Status = null;
+        }
+        Moves = saveData.moves.Select(s => new Move(s)).ToList();
+
+        CalculateStats();
+        StatusChanges = new Queue<string>();
+        ResetStatBoost();
+        VolatileStatus = null;
+    }
+
+    public PokemonSaveData GetSaveData()
+    {
+        var saveData = new PokemonSaveData()
+        {
+            name = Base.name,
+            hp = HP,
+            level = Level,
+            exp = Exp,
+            statusId = Status?.Id,
+            moves = Moves.Select(m => m.GetSaveData()).ToList()
+        };
+
+        return saveData;
     }
 
     void CalculateStats()
@@ -120,11 +159,11 @@ public class Pokemon
 
             if (boost > 0)
             {
-                StatusChanges.Enqueue($"{Base.PkmName}'s {stat} rose!");
+                StatusChanges.Enqueue($"{Base.Name}'s {stat} rose!");
             }
             else
             {
-                StatusChanges.Enqueue($"{Base.PkmName}'s {stat} fell!");
+                StatusChanges.Enqueue($"{Base.Name}'s {stat} fell!");
             }
 
             Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
@@ -242,7 +281,7 @@ public class Pokemon
 
         Status = ConditionsDB.Conditions[conditionID];
         Status?.OnStart?.Invoke(this);
-        StatusChanges.Enqueue($"{Base.PkmName} {Status.StartMessage}");
+        StatusChanges.Enqueue($"{Base.Name} {Status.StartMessage}");
         OnStatusChanged?.Invoke();
     }
 
@@ -261,7 +300,7 @@ public class Pokemon
 
         VolatileStatus = ConditionsDB.Conditions[conditionID];
         VolatileStatus?.OnStart?.Invoke(this);
-        StatusChanges.Enqueue($"{Base.PkmName} {VolatileStatus.StartMessage}");
+        StatusChanges.Enqueue($"{Base.Name} {VolatileStatus.StartMessage}");
     }
 
     public void CureVolatileStatus()
@@ -318,4 +357,15 @@ public class DamageDetails
     public bool Fainted { get; set; }
     public float Critical { get; set; }
     public float TypeEffectivness { get; set; }
+}
+
+[System.Serializable]
+public class PokemonSaveData
+{
+    public string name;
+    public int hp;
+    public int level;
+    public int exp;
+    public ConditionID? statusId;
+    public List<MoveSaveData> moves;
 }

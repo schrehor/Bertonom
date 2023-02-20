@@ -15,10 +15,10 @@ public class MoveForgettingUI : MonoBehaviour
     {
         for (int i = 0; i < currentMoves.Count; i++)
         {
-            moveText[i].text = currentMoves[i].MoveName;
+            moveText[i].text = currentMoves[i].Name;
         }
 
-        moveText[currentMoves.Count].text = newMove.MoveName;
+        moveText[currentMoves.Count].text = newMove.Name;
     }
 
     public void HandleMoveSelection(Action<int> onSelected)

@@ -134,7 +134,7 @@ public class BattleDialogBox : MonoBehaviour
         {
             if ( i < moves.Count)
             {
-                moveText[i].text = moves[i].Base.MoveName;
+                moveText[i].text = moves[i].Base.Name;
             }
             else
             {

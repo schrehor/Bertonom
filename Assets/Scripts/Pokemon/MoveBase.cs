@@ -19,7 +19,7 @@ public class MoveBase : ScriptableObject
     [SerializeField] MoveTarget target;
 
 
-    public string MoveName
+    public string Name
     {
         get { return moveName; }
     }

@@ -33,7 +33,7 @@ public class ConditionsDB
                     OnAfterTurn = pokemon =>
                     {
                         pokemon.UpdateHP(pokemon.MaxHp / 8);
-                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} hurt itself due to poison");
+                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} hurt itself due to poison");
                     }
                     
                 }
@@ -47,7 +47,7 @@ public class ConditionsDB
                     OnAfterTurn = pokemon =>
                     {
                         pokemon.UpdateHP(pokemon.MaxHp / 16);
-                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} hurt itself due to burn");
+                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} hurt itself due to burn");
                     }
                     
                 }
@@ -62,7 +62,7 @@ public class ConditionsDB
                     {
                         if (Random.Range(1,5) == 1)
                         {
-                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName}'s paralyzed and can't move");
+                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name}'s paralyzed and can't move");
                             return false;
                         }
                         return true;
@@ -81,7 +81,7 @@ public class ConditionsDB
                         if (Random.Range(1,5) == 1)
                         {
                             pokemon.CureStatus();
-                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} is not frozen anymore");
+                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is not frozen anymore");
                             return true;
                         }
                         return false;
@@ -106,11 +106,11 @@ public class ConditionsDB
                         if (pokemon.StatusTime <= 0)
                         {
                             pokemon.CureStatus();
-                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} woke up!");
+                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} woke up!");
                             return true;
                         }
                         pokemon.StatusTime--;
-                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} is sleeping");
+                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is sleeping");
                         return false;
                     }
                 }
@@ -132,11 +132,11 @@ public class ConditionsDB
                         if (pokemon.VolatileStatusTime <= 0)
                         {
                             pokemon.CureVolatileStatus();
-                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} kicked out of confusion!");
+                            pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} kicked out of confusion!");
                             return true;
                         }
                         pokemon.VolatileStatusTime--;
-                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.PkmName} is confused");
+                        pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is confused");
 
                         // 50% chance to do a move
                         if (Random.Range(1, 3) == 1)
