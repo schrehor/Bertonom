@@ -8159,6 +8159,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 659186753394387436, guid: 131bed5d22745744b84b76139d821c04, type: 3}
+      propertyPath: pokemons.Array.data[0]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 62ccc7cad4dac8f468207d634514110f, type: 2}
+    - target: {fileID: 659186753394387436, guid: 131bed5d22745744b84b76139d821c04, type: 3}
+      propertyPath: pokemons.Array.data[0]._level
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 659186753394387438, guid: 131bed5d22745744b84b76139d821c04, type: 3}
       propertyPath: m_RootOrder
       value: 2
