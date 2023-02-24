@@ -28,6 +28,10 @@ public class GameController : MonoBehaviour
 
         menuController = GetComponent<MenuController>();
 
+        // TODO: remove comments after finishing the game to disable mouse
+        // Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
+
         PokemonDB.Init();
         MoveDB.Init();
         ConditionsDB.Init();

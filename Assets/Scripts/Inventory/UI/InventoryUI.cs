@@ -10,20 +10,28 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private ItemSlotUI itemSlotUI;
     [SerializeField] private Image itemIcon;
     [SerializeField] private Text itemDescription;
+    [SerializeField] private Image upArrow;
+    [SerializeField] private Image downArrow;
 
 
+    private const int ItemsInViewport = 8;
+    
     private List<ItemSlotUI> _slotUIList;
     private Inventory _inventory;
     private int _selecteItem = 0;
+    private RectTransform _itemListRect;
+    private float _itemSlotUIHeight;
 
     private void Awake()
     {
         _inventory = Inventory.GetInventory();
+        _itemListRect = itemList.GetComponent<RectTransform>();
     }
 
     private void Start()
     {
         UpdateItemList();
+        _itemSlotUIHeight = itemSlotUI.GetComponent<RectTransform>().rect.height;
     }
 
     private void UpdateItemList()
@@ -89,5 +97,19 @@ public class InventoryUI : MonoBehaviour
         var item = _inventory.Slots[_selecteItem].Item;
         itemIcon.sprite = item.Icon;
         itemDescription.text = item.Description;
+
+        HandleScrolling();
+    }
+    
+    private void HandleScrolling()
+    {
+        float scrollPos = Mathf.Clamp(_selecteItem - ItemsInViewport / 2, 0, _selecteItem) * _itemSlotUIHeight;
+        _itemListRect.localPosition = new Vector2(_itemListRect.localPosition.x, scrollPos);
+
+        bool showUpArrow = _selecteItem > ItemsInViewport / 2;
+        upArrow.gameObject.SetActive(showUpArrow);
+        
+        bool showDownArrow = _selecteItem + ItemsInViewport / 2 < _slotUIList.Count;
+        downArrow.gameObject.SetActive(showDownArrow);
     }
 }
