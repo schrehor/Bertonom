@@ -11,6 +11,7 @@ public class PartyScreen : MonoBehaviour
     PartyMemberUI[] memberSlots;
     List<Pokemon> pokemons;
     int selection;
+    private PokemonParty _party;
 
     public Pokemon SelectedMember => pokemons[selection];
 
@@ -22,11 +23,15 @@ public class PartyScreen : MonoBehaviour
     public void Init()
     {
         memberSlots = GetComponentsInChildren<PartyMemberUI>(true);
+        _party = PokemonParty.GetPlayerParty();
+        SetPartyData();
+
+        _party.OnUpdated += SetPartyData;
     }
 
-    public void SetPartyData(List<Pokemon> pokemons)
+    public void SetPartyData()
     {
-        this.pokemons = pokemons;
+        pokemons = _party.Pokemons;
 
         for (int i = 0; i < memberSlots.Length; i++)
         {
