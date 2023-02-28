@@ -10,7 +10,15 @@ public class PokemonParty : MonoBehaviour
 
     public event Action OnUpdated;
 
-    public List<Pokemon> Pokemons { get { return pokemons; } set { pokemons = value; } }
+    public List<Pokemon> Pokemons
+    {
+        get { return pokemons; }
+        set
+        {
+            pokemons = value;
+            OnUpdated?.Invoke();
+        }
+    }
 
     private void Start()
     {
