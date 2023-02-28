@@ -36,6 +36,8 @@ public class InventoryUI : MonoBehaviour
     {
         UpdateItemList();
         _itemSlotUIHeight = itemSlotUI.GetComponent<RectTransform>().rect.height;
+
+        _inventory.OnUpdated += UpdateItemList;
     }
 
     private void UpdateItemList()
@@ -94,6 +96,8 @@ public class InventoryUI : MonoBehaviour
             Action onSelected = () =>
             {
                 // Use item on the selected pokemon
+                _inventory.UseItem(_selecteItem, partyScreen.SelectedMember);
+                
             };
             
             Action onBackPartyScreen = () =>

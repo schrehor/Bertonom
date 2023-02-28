@@ -188,7 +188,7 @@ public class Pokemon
         CalculateStats();
         var diff = MaxHp - oldMaxHp;
 
-        UpdateHP(-diff);
+        DecreaseHP(-diff);
     }
 
     public LearnableMove GetLearnableMoveAtLevel()
@@ -262,14 +262,21 @@ public class Pokemon
         float defenseCalc = attackCalc * move.Base.Power * ((float)attack / defense) + 2;
         int damage = Mathf.FloorToInt(defenseCalc * modifiers);
 
-        UpdateHP(damage);
+        DecreaseHP(damage);
 
         return damageDetails;
     }
 
-    public void UpdateHP(int damage)
+    public void DecreaseHP(int damage)
     {
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+        OnHPCHanged?.Invoke();
+        HpChange = true;
+    }
+    
+    public void IncreaseHP(int amount)
+    {
+        HP = Mathf.Clamp(HP + amount, 0, MaxHp);
         OnHPCHanged?.Invoke();
         HpChange = true;
     }
