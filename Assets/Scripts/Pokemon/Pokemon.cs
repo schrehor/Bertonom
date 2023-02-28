@@ -38,6 +38,7 @@ public class Pokemon
     public int VolatileStatusTime { get; set; }
     public bool HpChange { get; set; }
     public event System.Action OnStatusChanged;
+    public event System.Action OnHPCHanged;
 
     public void Init()
     {
@@ -269,6 +270,7 @@ public class Pokemon
     public void UpdateHP(int damage)
     {
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+        OnHPCHanged?.Invoke();
         HpChange = true;
     }
     
