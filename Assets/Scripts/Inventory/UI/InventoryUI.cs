@@ -96,8 +96,8 @@ public class InventoryUI : MonoBehaviour
             Action onSelected = () =>
             {
                 // Use item on the selected pokemon
-                _inventory.UseItem(_selecteItem, partyScreen.SelectedMember);
-                
+                StartCoroutine(UseItem());
+
             };
             
             Action onBackPartyScreen = () =>
@@ -107,6 +107,23 @@ public class InventoryUI : MonoBehaviour
             
             partyScreen.HandleUpdate(onSelected, onBackPartyScreen);
         }
+    }
+
+    IEnumerator UseItem()
+    {
+        _state = InventoryUIState.Busy;
+        
+        var usedItem = _inventory.UseItem(_selecteItem, partyScreen.SelectedMember);
+        if (usedItem != null)
+        {
+            yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}");
+        }
+        else
+        {
+            yield return DialogManager.Instance.ShowDialogText($"It won't have any effect");
+        }
+        
+        ClosePartyScreen();
     }
     
     void UpdateItemSelection()

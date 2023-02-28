@@ -27,6 +27,21 @@ public class DialogManager : MonoBehaviour
         Instance = this;
     }
 
+    public IEnumerator ShowDialogText(string text, bool waitForInput = true)
+    {
+        IsShowing = true;
+        dialogBox.SetActive(true);
+        
+        yield return TypeDialog(text);
+
+        if (waitForInput)
+        {
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.X));
+        }
+        dialogBox.SetActive(false);
+        IsShowing = false;
+    }
+    
     public IEnumerator ShowDialog(Dialog dialog, Action onFinished = null)
     {
         yield return new WaitForEndOfFrame();
