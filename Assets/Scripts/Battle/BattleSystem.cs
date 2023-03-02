@@ -217,7 +217,7 @@ public class BattleSystem : MonoBehaviour
         yield return ShowStatusChanges(sourceUnit.Pokemon);
         if (!canRunMove)
         {
-            yield return sourceUnit.Hud.UpdateHP();
+            yield return sourceUnit.Hud.WaitForHPUpdate();
             yield break;
         }
         
@@ -239,7 +239,7 @@ public class BattleSystem : MonoBehaviour
             else
             {
                 var damageDetails = targetUnit.Pokemon.TakeDamage(move, sourceUnit.Pokemon);
-                yield return targetUnit.Hud.UpdateHP();
+                yield return targetUnit.Hud.WaitForHPUpdate();
                 yield return ShowDamageDetails(damageDetails);
             }
 
@@ -317,13 +317,13 @@ public class BattleSystem : MonoBehaviour
         {
             yield break;
         }
-
+        
         yield return new WaitUntil(() => state == BattleState.RunningTurn);
 
         // Statuses will hurt pokemon after turn
         sourceUnit.Pokemon.OnAfterTurn();
         yield return ShowStatusChanges(sourceUnit.Pokemon);
-        yield return sourceUnit.Hud.UpdateHP();
+        yield return sourceUnit.Hud.WaitForHPUpdate();
 
         // Check if status damage is fatal
         if (sourceUnit.Pokemon.HP <= 0)

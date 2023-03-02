@@ -6,6 +6,7 @@ public class HPbar : MonoBehaviour
 {
     [SerializeField] GameObject health;
 
+    public bool IsUpdating { get; private set; }
     public void SetHP(float hpNormalized)
     {
         health.transform.localScale = new Vector3(hpNormalized, 1f);
@@ -13,6 +14,8 @@ public class HPbar : MonoBehaviour
 
     public IEnumerator SetHPSmooth(float newHp)
     {
+        IsUpdating = true;
+        
         float curHp = health.transform.localScale.x;
         float changeAmt = curHp - newHp;
 
@@ -24,5 +27,6 @@ public class HPbar : MonoBehaviour
         }
 
         SetHP(newHp);
+        IsUpdating = false;
     }
 }
