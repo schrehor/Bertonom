@@ -188,8 +188,8 @@ public class BattleSystem : MonoBehaviour
             }
             else if (playerAction == BattleAction.UseItem)
             {
+                // This is handled from item screen, so do nothing and skip to enemy move
                 dialogBox.EnableActionSelector(false);
-                yield return ThrowPokeball();
             }
             else if (playerAction == BattleAction.Run)
             {
@@ -533,8 +533,15 @@ public class BattleSystem : MonoBehaviour
                 inventoryUI.gameObject.SetActive(false);
                 state = BattleState.ActionSelection;
             };
+
+            Action onItemUsed = () =>
+            {
+                state = BattleState.Busy;
+                inventoryUI.gameObject.SetActive(false);
+                StartCoroutine(RunTurns(BattleAction.UseItem));
+            };
             
-            inventoryUI.HandeUpdate(onBack);
+            inventoryUI.HandeUpdate(onBack, onItemUsed);
         }
         else if (state == BattleState.AboutToUse)
         {
