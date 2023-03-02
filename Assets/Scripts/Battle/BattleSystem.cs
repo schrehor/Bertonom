@@ -5,19 +5,20 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, PartyScreen, AboutToUse, MoveToForget, BattleOver } 
+public enum BattleState { Start, ActionSelection, MoveSelection, RunningTurn, Busy, Bag, PartyScreen, AboutToUse, MoveToForget, BattleOver } 
 public enum BattleAction { Move, SwitchPokemon, UseItem, Run}
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] BattleUnit playerUnit;
-    [SerializeField] BattleUnit enemyUnit;
-    [SerializeField] BattleDialogBox dialogBox;
-    [SerializeField] PartyScreen partyScreen;
-    [SerializeField] Image playerImage;
-    [SerializeField] Image trainerImage;
-    [SerializeField] GameObject pokeballSprite;
-    [SerializeField] MoveForgettingUI moveForgettingUI;
+    [SerializeField] private BattleUnit playerUnit;
+    [SerializeField] private BattleUnit enemyUnit;
+    [SerializeField] private BattleDialogBox dialogBox;
+    [SerializeField] private PartyScreen partyScreen;
+    [SerializeField] private Image playerImage;
+    [SerializeField] private Image trainerImage;
+    [SerializeField] private GameObject pokeballSprite;
+    [SerializeField] private MoveForgettingUI moveForgettingUI;
+    [SerializeField] private InventoryUI inventoryUI;
 
     public event Action<bool> OnBattleOver;
 
@@ -525,6 +526,16 @@ public class BattleSystem : MonoBehaviour
         {
             HandlePartySelection();
         }
+        else if (state == BattleState.Bag)
+        {
+            Action onBack = () =>
+            {
+                inventoryUI.gameObject.SetActive(false);
+                state = BattleState.ActionSelection;
+            };
+            
+            inventoryUI.HandeUpdate(onBack);
+        }
         else if (state == BattleState.AboutToUse)
         {
             HandleAboutToUse();
@@ -602,7 +613,7 @@ public class BattleSystem : MonoBehaviour
             else if (currentAction == 1)
             {
                 // Bag
-                StartCoroutine(RunTurns(BattleAction.UseItem));
+                OpenBag();
             }
             else if (currentAction == 2)
             {
@@ -617,6 +628,12 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    void OpenBag()
+    {
+        state = BattleState.Bag;
+        inventoryUI.gameObject.SetActive(true);
+    }
+    
     void OpenPartyScreen()
     {
         partyScreen.CalledFrom = state;
