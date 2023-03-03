@@ -96,7 +96,7 @@ public class InventoryUI : MonoBehaviour
 
             if (prevCategory != _selectedCategory)
             {
-                _selectedItem = 0;
+                ResetSelection();
                 categoryText.text = Inventory.ItemCategories[_selectedCategory];
                 UpdateItemList();
             }
@@ -191,6 +191,17 @@ public class InventoryUI : MonoBehaviour
         downArrow.gameObject.SetActive(showDownArrow);
     }
 
+    void ResetSelection()
+    {
+        _selectedItem = 0;
+        
+        upArrow.gameObject.SetActive(false);
+        downArrow.gameObject.SetActive(false);
+
+        itemIcon.sprite = null;
+        itemDescription.text = "";
+    }
+    
     void OpenPartyScreen()
     {
         _state = InventoryUIState.PartySelection;
