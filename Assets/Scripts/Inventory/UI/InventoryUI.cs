@@ -166,11 +166,14 @@ public class InventoryUI : MonoBehaviour
             }
         }
         _selectedItem = Mathf.Clamp(_selectedItem, 0, slots.Count - 1);
-        
-        var item = slots[_selectedItem].Item;
-        itemIcon.sprite = item.Icon;
-        itemDescription.text = item.Description;
 
+        if (slots.Count > 0)
+        {
+            var item = slots[_selectedItem].Item;
+            itemIcon.sprite = item.Icon;
+            itemDescription.text = item.Description;
+        }
+        
         HandleScrolling();
     }
     
