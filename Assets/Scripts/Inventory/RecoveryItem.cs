@@ -67,6 +67,37 @@ public class RecoveryItem : ItemBase
                 pokemon.IncreaseHP(hpAmount);  
             }
         }
+        
+        // Recover status
+        if (recoverAllStatus || status != ConditionID.none)
+        {
+            if (pokemon.Status == null && pokemon.VolatileStatus != null)
+            {
+                return false;
+            }
+
+            if (recoverAllStatus)
+            {
+                pokemon.CureStatus();
+                pokemon.CureVolatileStatus();
+            }
+            else
+            {
+                if (pokemon.Status.Id == status)
+                {
+                    pokemon.CureStatus();
+                }
+                else if (pokemon.VolatileStatus.Id == status)
+                {
+                    pokemon.CureVolatileStatus();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            
+        }
 
         return true;
     }
