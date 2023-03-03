@@ -96,7 +96,16 @@ public class RecoveryItem : ItemBase
                     return false;
                 }
             }
-            
+        }
+        
+        // Restore PP - todo: make it so I only restore pp of a single move
+        if (restoreMaxPP )
+        {
+            pokemon.Moves.ForEach(m => m.IncreasePP(m.Base.PP));
+        }
+        else if (ppAmount > 0)
+        {
+            pokemon.Moves.ForEach(m => m.IncreasePP(ppAmount));
         }
 
         return true;
