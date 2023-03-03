@@ -23,14 +23,49 @@ public class RecoveryItem : ItemBase
 
     public override bool Use(Pokemon pokemon)
     {
-        if (hpAmount > 0)
+        // Revive
+        if (revive || maxRevive)
+        {
+            if (pokemon.HP > 0)
+            {
+                return false;
+            }
+
+            if (revive)
+            {
+                pokemon.IncreaseHP(pokemon.MaxHp / 2);
+            }
+            else
+            {
+                pokemon.IncreaseHP(pokemon.MaxHp);
+            }
+            
+            pokemon.CureStatus();
+            return true;
+        }
+
+        // No other items can be used on fainted pokemon
+        if (pokemon.HP == 0)
+        {
+            return false;
+        }
+        
+        // Restore HP
+        if (hpAmount > 0 || restoreMaxHP)
         {
             if (pokemon.HP == pokemon.MaxHp)
             {
                 return false;
             }
-            
-            pokemon.IncreaseHP(hpAmount);
+
+            if (restoreMaxHP)
+            {
+                pokemon.IncreaseHP(pokemon.MaxHp);
+            }
+            else
+            {
+                pokemon.IncreaseHP(hpAmount);  
+            }
         }
 
         return true;
