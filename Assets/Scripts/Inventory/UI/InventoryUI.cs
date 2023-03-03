@@ -91,7 +91,15 @@ public class InventoryUI : MonoBehaviour
                 _selectedCategory--;
             }
 
-            _selectedCategory = Mathf.Clamp(_selectedCategory, 0, Inventory.ItemCategories.Count - 1);
+            if (_selectedCategory > Inventory.ItemCategories.Count - 1)
+            {
+                _selectedCategory = 0;
+            }
+            else if (_selectedCategory < 0)
+            {
+                _selectedCategory = Inventory.ItemCategories.Count - 1;
+            }
+            //_selectedCategory = Mathf.Clamp(_selectedCategory, 0, Inventory.ItemCategories.Count - 1);
             _selectedItem = Mathf.Clamp(_selectedItem, 0, _inventory.GetSlotsByCategory(_selectedCategory).Count - 1);
 
             if (prevCategory != _selectedCategory)
