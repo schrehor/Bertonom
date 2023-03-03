@@ -169,7 +169,7 @@ public class GameController : MonoBehaviour
                 state = GameState.FreeRoam;
             };
 
-            inventoryUI.HandeUpdate(onBack);
+            inventoryUI.HandleUpdate(onBack);
         }
     }
 

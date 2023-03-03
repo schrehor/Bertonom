@@ -541,7 +541,7 @@ public class BattleSystem : MonoBehaviour
                 StartCoroutine(RunTurns(BattleAction.UseItem));
             };
             
-            inventoryUI.HandeUpdate(onBack, onItemUsed);
+            inventoryUI.HandleUpdate(onBack, onItemUsed);
         }
         else if (_state == BattleState.AboutToUse)
         {
