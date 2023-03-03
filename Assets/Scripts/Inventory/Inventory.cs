@@ -7,6 +7,8 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<ItemSlot> slots;
+    [SerializeField] private List<ItemSlot> pokeballSlots;
+    [SerializeField] private List<ItemSlot> tmSlots;
 
     public event Action OnUpdated;
     public List<ItemSlot> Slots => slots;
