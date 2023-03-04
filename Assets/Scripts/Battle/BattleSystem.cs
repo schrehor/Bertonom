@@ -113,6 +113,8 @@ public class BattleSystem : MonoBehaviour
     {
         _state = BattleState.BattleOver;
         _playerParty.Pokemons.ForEach(p => p.OnBattleOver());
+        playerUnit.Hud.ClearData();
+        enemyUnit.Hud.ClearData();
         OnBattleOver?.Invoke(won);
     }
 

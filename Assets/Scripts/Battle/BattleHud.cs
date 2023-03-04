@@ -23,11 +23,7 @@ public class BattleHud : MonoBehaviour
 
     public void SetData(Pokemon pokemon)
     {
-        if (_pokemon != null)
-        {
-            _pokemon.OnStatusChanged -= SetStatusText;
-            _pokemon.OnHPCHanged -= UpdateHP;
-        }
+        ClearData();
         
         _pokemon = pokemon;
 
@@ -118,5 +114,14 @@ public class BattleHud : MonoBehaviour
     public IEnumerator WaitForHPUpdate()
     {
         yield return new WaitUntil(() => hpBar.IsUpdating == false);
+    }
+    
+    public void ClearData()
+    {
+        if (_pokemon != null)
+        {
+            _pokemon.OnStatusChanged -= SetStatusText;
+            _pokemon.OnHPCHanged -= UpdateHP;
+        }
     }
 }
