@@ -137,7 +137,7 @@ public class InventoryUI : MonoBehaviour
     {
         _state = InventoryUIState.Busy;
         
-        var usedItem = _inventory.UseItem(_selectedItem, partyScreen.SelectedMember);
+        var usedItem = _inventory.UseItem(_selectedItem, partyScreen.SelectedMember, _selectedCategory);
         if (usedItem != null)
         {
             yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}");
