@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public enum ItemCategory { Items, Pokeball, Tms }
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<ItemSlot> slots;

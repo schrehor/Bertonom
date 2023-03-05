@@ -536,11 +536,9 @@ public class BattleSystem : MonoBehaviour
                 _state = BattleState.ActionSelection;
             };
 
-            Action onItemUsed = () =>
+            Action<ItemBase> onItemUsed = useItem =>
             {
-                _state = BattleState.Busy;
-                inventoryUI.gameObject.SetActive(false);
-                StartCoroutine(RunTurns(BattleAction.UseItem));
+                StartCoroutine(OnItemUsed(useItem));
             };
             
             inventoryUI.HandleUpdate(onBack, onItemUsed);
@@ -551,7 +549,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (_state == BattleState.MoveToForget)
         {
-            Action<int> onMoveSelected = (moveIndex) =>
+            Action<int> onMoveSelected = moveIndex =>
             {
                 moveForgettingUI.gameObject.SetActive(false);
 
@@ -795,7 +793,20 @@ public class BattleSystem : MonoBehaviour
         _state = BattleState.MoveToForget;
     }
 
-    IEnumerator ThrowPokeball()
+    IEnumerator OnItemUsed(ItemBase useItem)
+    {
+        _state = BattleState.Busy;
+        inventoryUI.gameObject.SetActive(false);
+
+        if (useItem is PokeballItem)
+        {
+            yield return ThrowPokeball((PokeballItem)useItem);
+        }
+                
+        StartCoroutine(RunTurns(BattleAction.UseItem));
+    }
+    
+    IEnumerator ThrowPokeball(PokeballItem pokeballItem)
     {
         _state = BattleState.Busy;
 
@@ -806,16 +817,17 @@ public class BattleSystem : MonoBehaviour
             yield break;
         }
 
-        yield return dialogBox.TypeDialog($"{_player.Name} used POKEBALL");
+        yield return dialogBox.TypeDialog($"{_player.Name} used {pokeballItem.Name.ToUpper()}!");
 
         var pokeballObj = Instantiate(pokeballSprite, playerUnit.transform.position - new Vector3(2, 0), Quaternion.identity);
         var pokeball = pokeballObj.GetComponent<SpriteRenderer>();
+        pokeball.sprite = pokeballItem.Icon;
 
         // Animations
         var enemyPosition = enemyUnit.transform.position;
         yield return pokeball.transform.DOJump(enemyPosition + new Vector3(0, 2), 2f, 1, 1f).WaitForCompletion();
         yield return enemyUnit.PlayCaptureAnimation();
-        yield return pokeball.transform.DOMoveY(enemyPosition.y - 1.3f, 0.5f).WaitForCompletion();
+        yield return pokeball.transform.DOMoveY(enemyPosition.y - 0.5f, 0.5f).WaitForCompletion();
 
         int shakeCount = TryToCatchPokemon(enemyUnit.Pokemon);
 

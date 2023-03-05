@@ -19,7 +19,7 @@ public class InventoryUI : MonoBehaviour
     
     [SerializeField] private PartyScreen partyScreen;
 
-    private Action _onItemUsed;
+    private Action<ItemBase> _onItemUsed;
     
     private const int ItemsInViewport = 8;
 
@@ -65,7 +65,7 @@ public class InventoryUI : MonoBehaviour
         UpdateItemSelection();
     }
 
-    public void HandleUpdate(Action onBack, Action onItemUsed = null)
+    public void HandleUpdate(Action onBack, Action<ItemBase> onItemUsed = null)
     {
         _onItemUsed = onItemUsed;
         
@@ -108,7 +108,7 @@ public class InventoryUI : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.X))
             {
-                OpenPartyScreen();
+                ItemSelected();
             }
             else if (Input.GetKeyDown(KeyCode.Z))
             {
@@ -133,6 +133,18 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    void ItemSelected()
+    {
+        if (_selectedCategory == (int)ItemCategory.Pokeball)
+        {
+            StartCoroutine(UseItem());
+        }
+        else
+        {
+            OpenPartyScreen();
+        }
+    }
+
     IEnumerator UseItem()
     {
         _state = InventoryUIState.Busy;
@@ -141,7 +153,7 @@ public class InventoryUI : MonoBehaviour
         if (usedItem != null)
         {
             yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}");
-            _onItemUsed?.Invoke();
+            _onItemUsed?.Invoke(usedItem);
         }
         else
         {
