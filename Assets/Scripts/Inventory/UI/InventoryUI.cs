@@ -152,7 +152,10 @@ public class InventoryUI : MonoBehaviour
         var usedItem = _inventory.UseItem(_selectedItem, partyScreen.SelectedMember, _selectedCategory);
         if (usedItem != null)
         {
-            yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}");
+            if (usedItem is not PokeballItem)
+            {
+                yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}");
+            }
             _onItemUsed?.Invoke(usedItem);
         }
         else
