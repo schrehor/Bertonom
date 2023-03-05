@@ -829,7 +829,7 @@ public class BattleSystem : MonoBehaviour
         yield return enemyUnit.PlayCaptureAnimation();
         yield return pokeball.transform.DOMoveY(enemyPosition.y - 0.5f, 0.5f).WaitForCompletion();
 
-        int shakeCount = TryToCatchPokemon(enemyUnit.Pokemon);
+        int shakeCount = TryToCatchPokemon(enemyUnit.Pokemon, pokeballItem);
 
         for (int i = 0; i < Mathf.Min(shakeCount, 3); i++)
         {
@@ -870,9 +870,10 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    int TryToCatchPokemon(Pokemon pokemon)
+    int TryToCatchPokemon(Pokemon pokemon, PokeballItem pokeball)
     {
-        float a = (3 * pokemon.MaxHp - 2 * pokemon.HP) * pokemon.Base.CatchRate * ConditionsDB.GetStatusBonus(pokemon.Status) / (3 * pokemon.MaxHp);
+        float a = (3 * pokemon.MaxHp - 2 * pokemon.HP) * pokemon.Base.CatchRate * pokeball.CatchRateModifier *
+            ConditionsDB.GetStatusBonus(pokemon.Status) / (3 * pokemon.MaxHp);
 
         if (a >= 255)
         {
