@@ -11,6 +11,10 @@ public class PokeballItem : ItemBase
 
     public override bool Use(Pokemon pokmeon)
     {
-        return true;
+        if (GameController.Instance.State == GameState.Battle)
+        {
+            return true;
+        }
+        return false;
     }
 }
