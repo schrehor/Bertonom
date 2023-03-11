@@ -148,11 +148,13 @@ public class InventoryUI : MonoBehaviour
     IEnumerator UseItem()
     {
         _state = InventoryUIState.Busy;
+
+        yield return HandleTmItems();
         
         var usedItem = _inventory.UseItem(_selectedItem, partyScreen.SelectedMember, _selectedCategory);
         if (usedItem != null)
         {
-            if (usedItem is not PokeballItem)
+            if (usedItem is RecoveryItem)
             {
                 yield return DialogManager.Instance.ShowDialogText($"The player used {usedItem.Name}");
             }
@@ -164,6 +166,23 @@ public class InventoryUI : MonoBehaviour
         }
         
         ClosePartyScreen();
+    }
+
+    IEnumerator HandleTmItems()
+    {
+        var tmItem = _inventory.GetItem(_selectedItem, _selectedCategory) as TmItem;
+        if (tmItem == null)
+        {
+            yield break;
+        }
+
+        var pokemon = partyScreen.SelectedMember;
+        if (pokemon.Moves.Count < PokemonBase.MaxNumOfMoves)
+        {
+            pokemon.LearnMove(tmItem.Move);
+            yield return DialogManager.Instance.ShowDialogText($"{pokemon.Base.Name} learned {tmItem.Move.Name}");
+        }
+        
     }
     
     void UpdateItemSelection()

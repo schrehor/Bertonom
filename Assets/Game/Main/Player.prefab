@@ -360,4 +360,8 @@ MonoBehaviour:
     count: 26
   - item: {fileID: 11400000, guid: 695f9837574dc0947bf527e07d304bd6, type: 2}
     count: 10
-  tmSlots: []
+  tmSlots:
+  - item: {fileID: 11400000, guid: bee8b90ffd6e7c247b6050a5f0d27dd1, type: 2}
+    count: 3
+  - item: {fileID: 11400000, guid: 1f0221d8ba5dcea46a13cbf8117cfd6c, type: 2}
+    count: 1

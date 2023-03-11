@@ -9,7 +9,7 @@ public class PokeballItem : ItemBase
 
     public float CatchRateModifier => catchRateModifier;
 
-    public override bool Use(Pokemon pokmeon)
+    public override bool Use(Pokemon pokemon)
     {
         if (GameController.Instance.State == GameState.Battle)
         {
