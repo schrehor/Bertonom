@@ -6,8 +6,10 @@ using UnityEngine;
 public class TmItem : ItemBase
 {
     [SerializeField] private MoveBase move;
+    [SerializeField] bool isHM;
 
     public MoveBase Move => move;
+    public bool IsHM => isHM;
 
     public override bool Use(Pokemon pokemon)
     {
@@ -16,5 +18,7 @@ public class TmItem : ItemBase
         return pokemon.HasMove(move);
     }
 
+    public override bool IsReusable => isHM;
     public override bool CanUseInBattle => false;
+    
 }
