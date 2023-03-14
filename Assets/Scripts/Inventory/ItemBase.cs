@@ -20,4 +20,7 @@ public class ItemBase : ScriptableObject
     {
         return false;
     }
+
+    public virtual bool CanUseInBattle => true;
+    public virtual bool CanUseOutsideBattle => true;
 }

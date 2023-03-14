@@ -15,4 +15,6 @@ public class TmItem : ItemBase
         // If the move was learned return true
         return pokemon.HasMove(move);
     }
+
+    public override bool CanUseInBattle => false;
 }
