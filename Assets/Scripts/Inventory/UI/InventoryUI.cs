@@ -137,7 +137,7 @@ public class InventoryUI : MonoBehaviour
         }
         else if (_state == InventoryUIState.MoveToForget)
         {
-            Action<int> onMoveSelected = (int moveIndex) =>
+            Action<int> onMoveSelected = (moveIndex) =>
             {
                 StartCoroutine(OnMoveToForgetSelected(moveIndex));
             };
@@ -179,6 +179,12 @@ public class InventoryUI : MonoBehaviour
         else
         {
             OpenPartyScreen();
+
+            if (item is TmItem)
+            {
+                // Show if TM is usable
+                partyScreen.ShowIfTmUsable(item as TmItem);
+            }
         }
     }
 
@@ -320,6 +326,8 @@ public class InventoryUI : MonoBehaviour
     void ClosePartyScreen()
     {
         _state = InventoryUIState.ItemSelection;
+        
+        partyScreen.ClearMemberSlotMessages();
         partyScreen.gameObject.SetActive(false);
     }
 
