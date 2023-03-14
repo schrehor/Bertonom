@@ -18,6 +18,11 @@ public class TmItem : ItemBase
         return pokemon.HasMove(move);
     }
 
+    public bool CanBeTaught(Pokemon pokemon)
+    {
+        return pokemon.Base.LearnableByItems.Contains(move);     
+    }
+    
     public override bool IsReusable => isHM;
     public override bool CanUseInBattle => false;
     public override string Name => base.Name + $": {move.Name}";

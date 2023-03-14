@@ -199,7 +199,10 @@ public class InventoryUI : MonoBehaviour
         }
         else
         {
-            yield return DialogManager.Instance.ShowDialogText($"It won't have any effect");
+            if (usedItem is RecoveryItem)
+            {
+                yield return DialogManager.Instance.ShowDialogText($"It won't have any effect");
+            }
         }
         
         ClosePartyScreen();
@@ -220,7 +223,13 @@ public class InventoryUI : MonoBehaviour
             yield return DialogManager.Instance.ShowDialogText($"{pokemon.Base.Name} already learned {tmItem.Move.Name}");
             yield break;
         }
-        
+
+        if (!tmItem.CanBeTaught(pokemon))
+        {
+            yield return DialogManager.Instance.ShowDialogText($"{pokemon.Base.Name} can't learn {tmItem.Move.Name}");
+            yield break;
+        }
+
         if (pokemon.Moves.Count < PokemonBase.MaxNumOfMoves)
         {
             pokemon.LearnMove(tmItem.Move);
