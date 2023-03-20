@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
 
         DialogManager.Instance.OnShowDialog += () =>
         {
+            prevState = state;
             state = GameState.Dialog;
         };
 
@@ -51,7 +52,7 @@ public class GameController : MonoBehaviour
         {
             if (state == GameState.Dialog)
             {
-                state = GameState.FreeRoam;
+                state = prevState;
             }
         };
 

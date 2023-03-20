@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdd4de090e344a379137f2b50fcb17c, type: 3}
   m_Name: MaxPotion
   m_EditorClassIdentifier: 
-  name: Super Potion
+  name: Max Potion
   description: Recovers the health of the Pokemon fully
   icon: {fileID: 1303851509, guid: 3c128fe58371b5d48b1728c050ae1b37, type: 3}
   hpAmount: 0
@@ -20,6 +20,6 @@ MonoBehaviour:
   ppAmount: 0
   restoreMaxPP: 0
   status: 0
-  ecoverAllStatus: 0
+  recoverAllStatus: 0
   revive: 0
   maxRevive: 0
