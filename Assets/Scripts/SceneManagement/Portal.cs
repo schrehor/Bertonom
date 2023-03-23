@@ -7,36 +7,37 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour, IPlayerTriggerable
 {
-    [SerializeField] int sceneToLoad = -1;
-    [SerializeField] DestinationIdentifier destPortal;
-    [SerializeField] Transform spawnPoint;
+    [SerializeField] private int sceneToLoad = -1;
+    [SerializeField] private DestinationIdentifier destPortal;
+    [SerializeField] private Transform spawnPoint;
 
-    PlayerController player;
-    Fader fader;
+    private PlayerController _player;
+    private Fader _fader;
 
     private void Start()
     {
-        fader = FindObjectOfType<Fader>();
+        _fader = FindObjectOfType<Fader>();
     }
 
     public void OnPlayerTriggered(PlayerController player)
     {
-        this.player = player;
+        this._player = player;
         StartCoroutine(SwitchScene());
     }
+    
 
     IEnumerator SwitchScene()
     {
         DontDestroyOnLoad(gameObject);
         GameController.Instance.PauseGame(true);
-        yield return fader.FadeIn(0.5f);
+        yield return _fader.FadeIn(0.5f);
 
         yield return SceneManager.LoadSceneAsync(sceneToLoad);
 
-        var destPortal = FindObjectsOfType<Portal>().First(x => x != this && x.destPortal == this.destPortal);
-        player.Character.SetPositionAndSnapToTile(destPortal.SpawnPoint.position);
+        var targetPortal = FindObjectsOfType<Portal>().First(x => x != this && x.destPortal == this.destPortal);
+        _player.Character.SetPositionAndSnapToTile(targetPortal.SpawnPoint.position);
 
-        yield return fader.FadeOut(0.5f);
+        yield return _fader.FadeOut(0.5f);
         GameController.Instance.PauseGame(false);
         Destroy(gameObject);
     }
