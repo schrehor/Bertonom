@@ -8420,6 +8420,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6579014766724923789, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 653a16215e27546c0b02d9e09ac64478, type: 2}
+    - target: {fileID: 6579014766724923789, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579014766724923789, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: No dopice
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579014766724923789, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.data[1]
+      value: Zas som zral z odpadkoveho kosa a dosral som sa skor ako som stihol
+        zapit vitaminy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579014766724923789, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.data[2]
+      value: Na tu mas totok, ja to idem vykydat na hnoj
+      objectReference: {fileID: 0}
     - target: {fileID: 7042968519954835877, guid: b668277894a25c24893fb9f9618364e8, type: 3}
       propertyPath: m_Name
       value: NPC

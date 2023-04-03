@@ -12,11 +12,13 @@ public class NPCController : MonoBehaviour, Interactable
     NPCState state;
     int currentPattern = 0;
 
-    Character character;
+    private Character _character;
+    private ItemGiver _itemGiver;
 
     private void Awake()
     {
-        character = GetComponent<Character>();
+        _character = GetComponent<Character>();
+        _itemGiver = GetComponent<ItemGiver>();
     }
 
     public IEnumerator Interact(Transform initiator)
@@ -24,9 +26,16 @@ public class NPCController : MonoBehaviour, Interactable
         if (state == NPCState.Idle)
         {
             state = NPCState.Dialog;
-            character.LookTowards(initiator.position);
+            _character.LookTowards(initiator.position);
 
-            yield return DialogManager.Instance.ShowDialog(dialog);
+            if (_itemGiver != null && _itemGiver.CanBeGiven())
+            {
+                yield return _itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+            }
+            else
+            {
+                yield return DialogManager.Instance.ShowDialog(dialog);
+            }
             
             idleTimer = 0f;
             state = NPCState.Idle;
@@ -48,7 +57,7 @@ public class NPCController : MonoBehaviour, Interactable
             }
         }
 
-        character.HandleUpdate();
+        _character.HandleUpdate();
     }
 
     IEnumerator Walk()
@@ -57,7 +66,7 @@ public class NPCController : MonoBehaviour, Interactable
 
         var oldPos = transform.position;
 
-        yield return character.Move(movementPattern[currentPattern]);
+        yield return _character.Move(movementPattern[currentPattern]);
 
         if (transform.position != oldPos)
         {
