@@ -8425,6 +8425,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 653a16215e27546c0b02d9e09ac64478, type: 2}
     - target: {fileID: 6579014766724923789, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579014766724923789, guid: b668277894a25c24893fb9f9618364e8, type: 3}
       propertyPath: dialog.lines.Array.size
       value: 3
       objectReference: {fileID: 0}
