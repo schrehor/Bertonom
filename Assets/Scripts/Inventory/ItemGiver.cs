@@ -16,10 +16,10 @@ public class ItemGiver : MonoBehaviour
         player.GetComponent<Inventory>().AddItem(item, count);
         _used = true;
 
-        string dialogText = $"Player received {item.Name}";
+        string dialogText = $"{player.Name} received {item.Name}";
         if (count > 1)
         {
-            dialogText = $"Player received {count} {item.Name}s";
+            dialogText = $"{player.Name} received {count} {item.Name}s";
         }
         
         yield return DialogManager.Instance.ShowDialogText(dialogText);
