@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
             state = GameState.Dialog;
         };
 
-        DialogManager.Instance.OnCloseDialog += () =>
+        DialogManager.Instance.OnDialogFinished += () =>
         {
             if (state == GameState.Dialog)
             {
