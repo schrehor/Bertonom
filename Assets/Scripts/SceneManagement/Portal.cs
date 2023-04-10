@@ -24,7 +24,9 @@ public class Portal : MonoBehaviour, IPlayerTriggerable
         this._player = player;
         StartCoroutine(SwitchScene());
     }
-    
+
+    public bool TriggerRepeatedly => false;
+
 
     IEnumerator SwitchScene()
     {

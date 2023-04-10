@@ -11,4 +11,6 @@ public class StoryItem : MonoBehaviour, IPlayerTriggerable
     {
         StartCoroutine(DialogManager.Instance.ShowDialog(dialog));
     }
+
+    public bool TriggerRepeatedly => false;
 }

@@ -12,4 +12,6 @@ public class TallGrass : MonoBehaviour, IPlayerTriggerable
             GameController.Instance.StartBattle();
         }
     }
+
+    public bool TriggerRepeatedly => true;
 }

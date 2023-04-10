@@ -23,6 +23,8 @@ public class LocationPortal : MonoBehaviour, IPlayerTriggerable
         StartCoroutine(Teleport());
     }
 
+    public bool TriggerRepeatedly => false;
+
     IEnumerator Teleport()
     {
         GameController.Instance.PauseGame(true);
