@@ -8228,6 +8228,87 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1001 &2063666218
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1136238872651467435, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: uniqueId
+      value: 95dc5237-f849-4606-a6ad-8c6f810faccf
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: questToStart
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ec3f71278b9ed54b8b8cb6c0ec2fc38, type: 2}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Joooj cigosky, zaklad zdravej vyzivy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: movementPattern.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835875, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: defaultDirection
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835877, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_Name
+      value: Cig Majster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b668277894a25c24893fb9f9618364e8, type: 3}
 --- !u!1001 &659186754285172063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8459,6 +8540,10 @@ PrefabInstance:
       propertyPath: uniqueId
       value: 9774064e-70b7-4be0-a49c-2f797ad27ccb
       objectReference: {fileID: 0}
+    - target: {fileID: 8345604245926130074, guid: 73309aa2d82e75749964726579b6f2ad, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 653a16215e27546c0b02d9e09ac64478, type: 2}
     - target: {fileID: 8345604245926130075, guid: 73309aa2d82e75749964726579b6f2ad, type: 3}
       propertyPath: m_Name
       value: Pickup

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fb38b698dfd5c40a71aff07f70407f, type: 3}
+  m_Name: Cigy
+  m_EditorClassIdentifier: 
+  name: Cigy
+  description: Typkovi pokemon sfajci celu krabnicku cig a je mu z toho pekne nakokot
+  startDialog:
+    lines:
+    - Dopice bracho, moj jebly pokemon mi ujebal krabicku s cigami a celu ju sfajcil
+    - Nemas pri sebe nejaku medicinku, lebo z domacej mu je este horsie
+  inProgressDialog:
+    lines:
+    - Zohnal si nejaku medicinku prosim ta?
+  completedDialog:
+    lines:
+    - Dakujem ti moc bratinenko moj majestatny, bez teba by som uz robil prihovor
+      na kar
+    - Na toto si zober, isto sa ti to zide ked budes objavovat svet
+  requiredItem: {fileID: 11400000, guid: 653a16215e27546c0b02d9e09ac64478, type: 2}
+  rewardItem: {fileID: 11400000, guid: bee8b90ffd6e7c247b6050a5f0d27dd1, type: 2}

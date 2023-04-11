@@ -2259,7 +2259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5457609712995851273, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
       propertyPath: slots.Array.size
-      value: 13
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5457609712995851273, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: tmSlots.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5457609712995851273, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
       propertyPath: slots.Array.data[5].item
@@ -2293,6 +2297,18 @@ PrefabInstance:
       propertyPath: slots.Array.data[12].item
       value: 
       objectReference: {fileID: 11400000, guid: 4cec7b7b1080249c4b9203b4407c4332, type: 2}
+    - target: {fileID: 5457609712995851273, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: tmSlots.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f0221d8ba5dcea46a13cbf8117cfd6c, type: 2}
+    - target: {fileID: 5457609712995851273, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: tmSlots.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 79921c1f8cb5a424c8df644895bb7210, type: 2}
+    - target: {fileID: 5457609712995851273, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: tmSlots.Array.data[0].count
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5478866449838294490, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
