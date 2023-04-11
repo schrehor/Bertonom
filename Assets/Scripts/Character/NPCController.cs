@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour, Interactable
 {
-    [SerializeField] Dialog dialog;
-    [SerializeField] List<Vector2> movementPattern;
-    [SerializeField] float timeBetweenPattern;
+    [SerializeField] private Dialog dialog;
+    [SerializeField] private QuestBase questToStart;
+    [SerializeField] private List<Vector2> movementPattern;
+    [SerializeField] private float timeBetweenPattern;
 
-    float idleTimer = 0f;
-    NPCState state;
-    int currentPattern = 0;
+    private float _idleTimer = 0f;
+    private NPCState _state;
+    private int _currentPattern = 0;
+    private Quest _activeQuest;
 
     private Character _character;
     private ItemGiver _itemGiver;
@@ -23,33 +25,49 @@ public class NPCController : MonoBehaviour, Interactable
 
     public IEnumerator Interact(Transform initiator)
     {
-        if (state == NPCState.Idle)
-        {
-            state = NPCState.Dialog;
-            _character.LookTowards(initiator.position);
+        if (_state != NPCState.Idle) yield break;
+        _state = NPCState.Dialog;
+        _character.LookTowards(initiator.position);
 
-            if (_itemGiver != null && _itemGiver.CanBeGiven())
+        if (_itemGiver != null && _itemGiver.CanBeGiven())
+        {
+            yield return _itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+        }
+        else if (questToStart != null)
+        {
+            _activeQuest = new Quest(questToStart);
+            yield return _activeQuest.StartQuest();
+            questToStart = null;
+        }
+        else if (_activeQuest != null)
+        {
+            if (_activeQuest.CanBeCompleted())
             {
-                yield return _itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+                yield return _activeQuest.CompleteQuest(initiator);
+                _activeQuest = null;
             }
             else
             {
-                yield return DialogManager.Instance.ShowDialog(dialog);
+                yield return DialogManager.Instance.ShowDialog(_activeQuest.Base.InProgressDialog);
             }
-            
-            idleTimer = 0f;
-            state = NPCState.Idle;
         }
+        else
+        {
+            yield return DialogManager.Instance.ShowDialog(dialog);
+        }
+            
+        _idleTimer = 0f;
+        _state = NPCState.Idle;
     }
 
     private void Update()
     {
-        if (state == NPCState.Idle)
+        if (_state == NPCState.Idle)
         {
-            idleTimer += Time.deltaTime;
-            if (idleTimer > timeBetweenPattern)
+            _idleTimer += Time.deltaTime;
+            if (_idleTimer > timeBetweenPattern)
             {
-                idleTimer = 0f;
+                _idleTimer = 0f;
                 if (movementPattern.Count > 0)
                 {
                     StartCoroutine(Walk());
@@ -62,18 +80,18 @@ public class NPCController : MonoBehaviour, Interactable
 
     IEnumerator Walk()
     {
-        state = NPCState.Walking;
+        _state = NPCState.Walking;
 
         var oldPos = transform.position;
 
-        yield return _character.Move(movementPattern[currentPattern]);
+        yield return _character.Move(movementPattern[_currentPattern]);
 
         if (transform.position != oldPos)
         {
-            currentPattern = (currentPattern + 1) % movementPattern.Count;
+            _currentPattern = (_currentPattern + 1) % movementPattern.Count;
         }
 
-        state = NPCState.Idle;
+        _state = NPCState.Idle;
 
     }
 
