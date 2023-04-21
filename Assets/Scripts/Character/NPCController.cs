@@ -38,6 +38,12 @@ public class NPCController : MonoBehaviour, Interactable
             _activeQuest = new Quest(questToStart);
             yield return _activeQuest.StartQuest();
             questToStart = null;
+            
+            if (_activeQuest.CanBeCompleted())
+            {
+                yield return _activeQuest.CompleteQuest(initiator);
+                _activeQuest = null;
+            }
         }
         else if (_activeQuest != null)
         {
