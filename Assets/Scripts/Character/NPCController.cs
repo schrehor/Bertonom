@@ -16,11 +16,13 @@ public class NPCController : MonoBehaviour, Interactable
 
     private Character _character;
     private ItemGiver _itemGiver;
+    private PokemonGiver _pokemonGiver;
 
     private void Awake()
     {
         _character = GetComponent<Character>();
         _itemGiver = GetComponent<ItemGiver>();
+        _pokemonGiver = GetComponent<PokemonGiver>();
     }
 
     public IEnumerator Interact(Transform initiator)
@@ -32,6 +34,10 @@ public class NPCController : MonoBehaviour, Interactable
         if (_itemGiver != null && _itemGiver.CanBeGiven())
         {
             yield return _itemGiver.GiveItem(initiator.GetComponent<PlayerController>());
+        }
+        else if (_pokemonGiver != null && _pokemonGiver.CanBeGiven())
+        {
+            yield return _pokemonGiver.GivePokemon(initiator.GetComponent<PlayerController>());
         }
         else if (questToStart != null)
         {

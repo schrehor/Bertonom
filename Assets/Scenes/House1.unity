@@ -3461,6 +3461,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3c811124238c444c8004ac600f7eede, type: 3}
+--- !u!1 &1065143613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7042968519954835877, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+  m_PrefabInstance: {fileID: 1775170682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1065143614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065143613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a39b43989b6f94622ac54a6818b64a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokemonToGive:
+    _base: {fileID: 11400000, guid: 4be9881a03f1f4dd198b86c19677aeb8, type: 2}
+    _level: 10
+  dialog:
+    lines:
+    - Toto som nasiel na povale a bojim sa to otvorit
+    - Prosim ta zober si to a pakuj dopice
 --- !u!1 &1291170609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4038,6 +4062,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a95f077aaa57e0e44bc6d06e7a527f8e, type: 3}
+--- !u!1001 &1775170682
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1136238872651467435, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: uniqueId
+      value: 6c47443f-fb2b-43e1-9dc0-bb54fbe19622
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Jako sa ma ta vyjebana spageta, huh?
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: movementPattern.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835877, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b668277894a25c24893fb9f9618364e8, type: 3}
 --- !u!1 &1787831880
 GameObject:
   m_ObjectHideFlags: 0

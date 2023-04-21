@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432216fd18b6dd04ea37a95cd5512176, type: 3}
   m_Name: Rayquaza
   m_EditorClassIdentifier: 
-  pkmName: 
-  description: 
+  pkmName: Rayquaza
+  description: Giver of the zaza
   frontSprite: {fileID: 0}
   backSprite: {fileID: 0}
   type1: 0
@@ -24,4 +24,8 @@ MonoBehaviour:
   spAttack: 0
   spDefense: 0
   speed: 0
+  expYield: 0
+  growthRate: 0
+  catchRate: 255
   learnableMoves: []
+  learnableByItems: []
