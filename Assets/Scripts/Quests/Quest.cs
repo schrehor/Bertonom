@@ -13,6 +13,22 @@ public class Quest
         Base = _base;
     }
     
+    public QuestSaveData GetSaveData()
+    {
+        var data = new QuestSaveData
+        {
+            name = Base.Name,
+            status = Status
+        };
+        return data;
+    }
+
+    public Quest(QuestSaveData data)
+    {
+        Base = QuestDB.GetObjectByName(data.name);
+        Status = data.status;
+    }
+    
     public IEnumerator StartQuest()
     {
         Status = QuestStatus.Started;
@@ -59,6 +75,13 @@ public class Quest
         }
         return true;
     }
+}
+
+[System.Serializable]
+public class QuestSaveData
+{
+    public string name;
+    public QuestStatus status;
 }
 
 public enum QuestStatus {None, Started, Completed}

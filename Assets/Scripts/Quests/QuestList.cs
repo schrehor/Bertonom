@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class QuestList : MonoBehaviour
+public class QuestList : MonoBehaviour, ISavable
 {
     List<Quest> quests = new List<Quest>();
 
@@ -34,6 +34,20 @@ public class QuestList : MonoBehaviour
     public static QuestList GetQuestList()
     {
         return FindObjectOfType<PlayerController>().GetComponent<QuestList>();
+    }
+
+    public object CaptureState()
+    {
+        return quests.Select(q => q.GetSaveData()).ToList();
+    }
+
+    public void RestoreState(object state)
+    {
+        if (state is List<QuestSaveData> saveData)
+        {
+            quests = saveData.Select(q => new Quest(q)).ToList();
+            OnUpdated?.Invoke();
+        }
     }
 }
     
