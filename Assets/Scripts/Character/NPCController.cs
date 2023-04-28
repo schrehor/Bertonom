@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCController : MonoBehaviour, Interactable
+public class NPCController : MonoBehaviour, Interactable, ISavable
 {
     [SerializeField] private Dialog dialog;
     
@@ -153,6 +153,42 @@ public class NPCController : MonoBehaviour, Interactable
             pos += newPosRef;
         }
     }
+
+    public object CaptureState()
+    {
+        var saveData = new NPCQuestSaveData();
+        
+        saveData.activeQuest = _activeQuest?.GetSaveData();
+        if (questToStart != null)
+        {
+            saveData.questToStart = (new Quest(questToStart)).GetSaveData();
+        }
+        
+        if (questToComplete != null)
+        {
+            saveData.questToComplete = (new Quest(questToComplete)).GetSaveData();
+        }
+
+        return saveData;
+    }
+
+    public void RestoreState(object state)
+    {
+        if (state is NPCQuestSaveData saveData)
+        {
+            _activeQuest = (saveData.activeQuest != null) ? new Quest(saveData.questToComplete) : null;
+            questToStart = (saveData.questToStart != null) ? new Quest(saveData.questToStart).Base : null;
+            questToComplete = (saveData.questToComplete != null) ? new Quest(saveData.questToComplete).Base : null;
+        }
+    }
+}
+
+[System.Serializable]
+public class NPCQuestSaveData
+{
+    public QuestSaveData activeQuest;
+    public QuestSaveData questToStart;
+    public QuestSaveData questToComplete;
 }
 
 public enum NPCState { Idle, Walking, Dialog }
