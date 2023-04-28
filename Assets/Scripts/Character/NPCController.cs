@@ -176,7 +176,7 @@ public class NPCController : MonoBehaviour, Interactable, ISavable
     {
         if (state is NPCQuestSaveData saveData)
         {
-            _activeQuest = (saveData.activeQuest != null) ? new Quest(saveData.questToComplete) : null;
+            _activeQuest = (saveData.activeQuest != null) ? new Quest(saveData.activeQuest) : null;
             questToStart = (saveData.questToStart != null) ? new Quest(saveData.questToStart).Base : null;
             questToComplete = (saveData.questToComplete != null) ? new Quest(saveData.questToComplete).Base : null;
         }

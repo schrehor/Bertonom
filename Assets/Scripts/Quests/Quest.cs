@@ -17,7 +17,7 @@ public class Quest
     {
         var data = new QuestSaveData
         {
-            name = Base.Name,
+            name = Base.name,
             status = Status
         };
         return data;
