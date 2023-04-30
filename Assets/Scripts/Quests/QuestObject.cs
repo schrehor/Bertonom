@@ -33,6 +33,12 @@ public class QuestObject : MonoBehaviour
                 if (onStart == ObjectActions.Enable)
                 {
                     child.gameObject.SetActive(true);
+                    
+                    var savableEntity = child.GetComponent<SavableEntity>();
+                    if (savableEntity != null)
+                    {
+                        SavingSystem.i.RestoreEntity(savableEntity);
+                    }
                 }
                 else if (onStart == ObjectActions.Disable)
                 {
@@ -48,6 +54,12 @@ public class QuestObject : MonoBehaviour
                 if (onComplete == ObjectActions.Enable)
                 {
                     child.gameObject.SetActive(true);
+                    
+                    var savableEntity = child.GetComponent<SavableEntity>();
+                    if (savableEntity != null)
+                    {
+                        SavingSystem.i.RestoreEntity(savableEntity);
+                    }
                 }
                 else if (onComplete == ObjectActions.Disable)
                 {
