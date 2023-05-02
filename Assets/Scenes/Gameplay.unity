@@ -1297,6 +1297,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2480288684204965055, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: pokemons.Array.data[0]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 62ccc7cad4dac8f468207d634514110f, type: 2}
+    - target: {fileID: 2480288684204965055, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: pokemons.Array.data[1]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 62ccc7cad4dac8f468207d634514110f, type: 2}
+    - target: {fileID: 2480288684204965055, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: pokemons.Array.data[0]._level
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2480288684216357757, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
       propertyPath: m_IsActive
       value: 1

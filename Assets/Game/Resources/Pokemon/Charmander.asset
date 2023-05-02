@@ -36,3 +36,7 @@ MonoBehaviour:
     level: 7
   - moveBase: {fileID: 11400000, guid: e4c21c7ba5ad10c42b5ad1d83d466632, type: 2}
     level: 7
+  learnableByItems: []
+  evolutions:
+  - <EvolvesInto>k__BackingField: {fileID: 11400000, guid: 2b2eb4e7e206a4846971ed6a773758e3, type: 2}
+    <RequiredLevel>k__BackingField: 16
