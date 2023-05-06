@@ -176,7 +176,7 @@ public class Evolution
 {
     [field: SerializeField] public PokemonBase EvolvesInto {get; private set;}
     [field: SerializeField] public int RequiredLevel {get; private set;}
-    [field: SerializeField] public ItemBase RequiredItem {get; private set;}
+    [field: SerializeField] public EvolutionItem RequiredItem {get; private set;}
 }
 
 public enum PokemonType
@@ -223,7 +223,7 @@ public enum Stat
 
 public class TypeChart
 {
-    static float[][] chart =
+    private static readonly float[][] Chart =
     {
         //                       Nor   Fir   Wat   Ele   Gra   Ice   Fig   Poi   Gro   Fly   Psy   Bug   Roc   Gho   Dra   Dar  Ste    Fai
         /*Normal*/  new float[] {1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   0.5f, 0f,    1f,   1f,   0.5f, 1f},
@@ -256,6 +256,6 @@ public class TypeChart
         int row = (int)attackType - 1;
         int col = (int)defenseType - 1;
 
-        return chart[row][col];
+        return Chart[row][col];
     }
 }
