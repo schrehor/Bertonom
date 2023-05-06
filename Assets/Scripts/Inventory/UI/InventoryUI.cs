@@ -193,6 +193,25 @@ public class InventoryUI : MonoBehaviour
         _state = InventoryUIState.Busy;
 
         yield return HandleTmItems();
+
+        var item = _inventory.GetItem(_selectedItem, _selectedCategory);
+        var pokemon = partyScreen.SelectedMember;
+        
+        // Handle evolution items
+        if (item is EvolutionItem)
+        {
+            var evolution = pokemon.CheckForEvolution(item);
+            if (evolution != null)
+            {
+                yield return EvolutionManager.i.Evolve(pokemon, evolution);
+            }
+            else
+            {
+                yield return DialogManager.Instance.ShowDialogText($"It won't have any effect");
+                ClosePartyScreen();
+                yield break;
+            }
+        }
         
         var usedItem = _inventory.UseItem(_selectedItem, partyScreen.SelectedMember, _selectedCategory);
         if (usedItem != null)
@@ -207,7 +226,7 @@ public class InventoryUI : MonoBehaviour
         {
             if (_selectedItem == (int)ItemCategory.Items)
             {
-                yield return DialogManager.Instance.ShowDialogText($"It won't have any effect");
+                
             }
         }
         

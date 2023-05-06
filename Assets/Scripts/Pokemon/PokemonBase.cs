@@ -176,6 +176,7 @@ public class Evolution
 {
     [field: SerializeField] public PokemonBase EvolvesInto {get; private set;}
     [field: SerializeField] public int RequiredLevel {get; private set;}
+    [field: SerializeField] public ItemBase RequiredItem {get; private set;}
 }
 
 public enum PokemonType

@@ -101,6 +101,7 @@ public class Inventory : MonoBehaviour, ISavable
         switch (item)
         {
             case RecoveryItem:
+            case EvolutionItem:
                 return ItemCategory.Items;
             case PokeballItem:
                 return ItemCategory.Pokeball;

@@ -40,3 +40,4 @@ MonoBehaviour:
   evolutions:
   - <EvolvesInto>k__BackingField: {fileID: 11400000, guid: 2b2eb4e7e206a4846971ed6a773758e3, type: 2}
     <RequiredLevel>k__BackingField: 16
+    <RequiredItem>k__BackingField: {fileID: 11400000, guid: 74acd349b25716b4eb7946add3493e46, type: 2}
