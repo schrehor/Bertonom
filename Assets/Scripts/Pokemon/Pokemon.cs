@@ -178,6 +178,7 @@ public class Pokemon
         if (Exp > Base.GetExpForLevel(_level + 1))
         {
             _level++;
+            CalculateStats();
             return true;
         }
 
