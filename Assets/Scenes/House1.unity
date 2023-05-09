@@ -1559,6 +1559,100 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &230714734
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1136238872651467435, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: uniqueId
+      value: bd59dd20-7d0e-45ae-b18d-106356e8d51a
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: questToComplete
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: dialog.lines.Array.data[0]
+      value: Vyzeras pekne napicu bracho. Poj si spocnut nachvilu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835874, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: movementPattern.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835877, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_Name
+      value: Healer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 35.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+--- !u!1 &230714735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7042968519954835877, guid: b668277894a25c24893fb9f9618364e8, type: 3}
+  m_PrefabInstance: {fileID: 230714734}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &230714736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230714735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe18fa8baecfe1478ebd71be2005931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &570286500
 GameObject:
   m_ObjectHideFlags: 0
@@ -4091,7 +4185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7042968519954835877, guid: b668277894a25c24893fb9f9618364e8, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: Professor
       objectReference: {fileID: 0}
     - target: {fileID: 7042968519954835879, guid: b668277894a25c24893fb9f9618364e8, type: 3}
       propertyPath: m_RootOrder

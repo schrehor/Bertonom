@@ -229,6 +229,12 @@ public class Pokemon
         _base = evolution.EvolvesInto;
         CalculateStats();
     }
+
+    public void Heal()
+    {
+        HP = MaxHp;
+        OnHPCHanged?.Invoke();
+    }
     
     public int Attack
     {
