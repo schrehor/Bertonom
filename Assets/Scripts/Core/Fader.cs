@@ -6,20 +6,22 @@ using UnityEngine.UI;
 
 public class Fader : MonoBehaviour
 {
-    Image image;
+    public static Fader Instance { get; private set; }
+    private Image _image;
 
     private void Awake()
     {
-        image = GetComponent<Image>();
+        Instance = this;
+        _image = GetComponent<Image>();
     }
 
     public IEnumerator FadeIn(float time)
     {
-        yield return image.DOFade(1, time).WaitForCompletion();
+        yield return _image.DOFade(1, time).WaitForCompletion();
     }
 
     public IEnumerator FadeOut(float time)
     {
-        yield return image.DOFade(0, time).WaitForCompletion();
+        yield return _image.DOFade(0, time).WaitForCompletion();
     }
 }
