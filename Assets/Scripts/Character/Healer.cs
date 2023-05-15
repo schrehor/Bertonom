@@ -6,7 +6,7 @@ public class Healer : MonoBehaviour
 {
     public IEnumerator Heal(Transform player, Dialog dialog)
     {
-        yield return DialogManager.Instance.ShowDialog(dialog);
+        yield return DialogManager.Instance.ShowDialog(dialog, new List<string> { "Yes", "No" });
 
         yield return Fader.Instance.FadeIn(0.5f);
         var playerParty = player.GetComponent<PokemonParty>();
