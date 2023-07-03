@@ -11,4 +11,9 @@ public class ChoiceText : MonoBehaviour
     {
         TextField = GetComponent<Text>();
     }
+    
+    public void SetSelected(bool selected)
+    {
+        TextField.color = selected ? GlobalSettings.i.HighlightedColor : Color.black;
+    }
 }
