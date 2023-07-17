@@ -12,7 +12,7 @@ public class ChoiceBox : MonoBehaviour
     private List<ChoiceText> _choiceTexts;
     private int _currentChoice;
 
-    public IEnumerator ShowChoices(List<string> choices)
+    public IEnumerator ShowChoices(List<string> choices, Action<int> onChoiceSelected)
     {
         choiceSelected = false;
         _currentChoice = 0;
@@ -34,6 +34,9 @@ public class ChoiceBox : MonoBehaviour
         }
         
         yield return new WaitUntil(() => choiceSelected);
+        
+        onChoiceSelected?.Invoke(_currentChoice);
+        gameObject.SetActive(false);
     }
 
     private void Update()
@@ -52,6 +55,11 @@ public class ChoiceBox : MonoBehaviour
         for (int i = 0; i < _choiceTexts.Count; i++)
         {
             _choiceTexts[i].SetSelected(i == _currentChoice);
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            choiceSelected = true;
         }
     }
 }
