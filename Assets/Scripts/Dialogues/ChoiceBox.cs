@@ -47,7 +47,7 @@ public class ChoiceBox : MonoBehaviour
             _currentChoice--;
         }
 
-        _currentChoice = Mathf.Clamp(_currentChoice, 0, 1);
+        _currentChoice = Mathf.Clamp(_currentChoice, 0, _choiceTexts.Count - 1);
 
         for (int i = 0; i < _choiceTexts.Count; i++)
         {
