@@ -1039,6 +1039,7 @@ GameObject:
   - component: {fileID: 3115911922994939571}
   - component: {fileID: 2077443644415043769}
   - component: {fileID: 1087616580118090772}
+  - component: {fileID: 1558893961450512446}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1167,6 +1168,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evolutionUI: {fileID: 7798907082439982260}
   pokemonImage: {fileID: 4539915210401090518}
+--- !u!114 &1558893961450512446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2480288683499933564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9057843879b5f4a8db45c465310174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2480288683532835189
 GameObject:
   m_ObjectHideFlags: 0
