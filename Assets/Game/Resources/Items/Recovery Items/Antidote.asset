@@ -15,11 +15,13 @@ MonoBehaviour:
   name: Antidote
   description: Cures the Pokemon from poison
   icon: {fileID: 1842599598, guid: 3c128fe58371b5d48b1728c050ae1b37, type: 3}
+  price: 100
+  isSellabe: 1
   hpAmount: 0
   restoreMaxHP: 0
   ppAmount: 0
   restoreMaxPP: 0
   status: 1
-  ecoverAllStatus: 0
+  recoverAllStatus: 0
   revive: 0
   maxRevive: 0

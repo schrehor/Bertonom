@@ -150,6 +150,13 @@ public class InventoryUI : MonoBehaviour
     {
         _state = InventoryUIState.Busy;
         var item = _inventory.GetItem(_selectedItem, _selectedCategory);
+
+        if (GameController.Instance.State == GameState.Shop)
+        {
+            _onItemUsed?.Invoke(item);
+            _state = InventoryUIState.ItemSelection;
+            yield break;
+        }
         
         if (GameController.Instance.State == GameState.Battle)
         {

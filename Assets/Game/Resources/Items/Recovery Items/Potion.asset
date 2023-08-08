@@ -15,11 +15,13 @@ MonoBehaviour:
   name: Potion
   description: Recovers the health of the Pokemon by 20 HP
   icon: {fileID: 1854274607, guid: 3c128fe58371b5d48b1728c050ae1b37, type: 3}
+  price: 100
+  isSellabe: 1
   hpAmount: 20
   restoreMaxHP: 0
   ppAmount: 0
   restoreMaxPP: 0
   status: 0
-  ecoverAllStatus: 0
+  recoverAllStatus: 0
   revive: 0
   maxRevive: 0
