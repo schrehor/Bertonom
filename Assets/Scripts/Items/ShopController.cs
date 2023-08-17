@@ -8,7 +8,8 @@ public enum ShopState { Menu, Buying, Selling, Busy }
 public class ShopController : MonoBehaviour
 {
     [SerializeField] private InventoryUI inventoryUI;
-    
+    [SerializeField] private WalletUI walletUI;
+
     public event Action OnStartShopping;
     public event Action OnFinishShopping;
     
@@ -86,6 +87,8 @@ public class ShopController : MonoBehaviour
             yield break;
         }
         
+        walletUI.Show();
+        
         var sellingPrice = Mathf.Round(item.Price / 2);
         
         int selectedChoice = 0;
@@ -101,6 +104,8 @@ public class ShopController : MonoBehaviour
             // TODO add money
             yield return DialogManager.Instance.ShowDialogText($"Dik za obchod a skap");
         }
+        
+        walletUI.Close();
         
         _state = ShopState.Selling;
     }
