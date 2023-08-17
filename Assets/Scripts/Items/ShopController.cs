@@ -101,7 +101,7 @@ public class ShopController : MonoBehaviour
         {
             //Sell
             _inventory.RemoveItem(item);
-            // TODO add money
+            Wallet.Instance.AddMoney(sellingPrice);
             yield return DialogManager.Instance.ShowDialogText($"Dik za obchod a skap");
         }
         
