@@ -9,7 +9,8 @@ public class ShopController : MonoBehaviour
 {
     [SerializeField] private InventoryUI inventoryUI;
     [SerializeField] private WalletUI walletUI;
-
+    [SerializeField] private CountSelectorUI countSelectorUI;
+    
     public event Action OnStartShopping;
     public event Action OnFinishShopping;
     
@@ -90,6 +91,21 @@ public class ShopController : MonoBehaviour
         walletUI.Show();
         
         var sellingPrice = Mathf.Round(item.Price / 2);
+        int countToSell = 1;
+        
+        int itemCount = _inventory.GetItemCount(item);
+        if (itemCount > 1)
+        {
+            yield return DialogManager.Instance.ShowDialogText($"Kelo ich chces odpicit?",
+                waitForInput: false,
+                autoClose: false);
+            
+            yield return countSelectorUI.ShowSelector(itemCount, sellingPrice, (selectedCount) => countToSell = selectedCount);
+            
+            DialogManager.Instance.CloseDialog();
+        }
+        
+        sellingPrice *= countToSell;
         
         int selectedChoice = 0;
         yield return DialogManager.Instance.ShowDialogText($"Za tuto picovinu ti dam max {sellingPrice}, aj len kvoli tomu, ze vyzeras ako uplne hovno", 
@@ -100,7 +116,7 @@ public class ShopController : MonoBehaviour
         if (selectedChoice == 0)
         {
             //Sell
-            _inventory.RemoveItem(item);
+            _inventory.RemoveItem(item, countToSell);
             Wallet.Instance.AddMoney(sellingPrice);
             yield return DialogManager.Instance.ShowDialogText($"Dik za obchod a skap");
         }

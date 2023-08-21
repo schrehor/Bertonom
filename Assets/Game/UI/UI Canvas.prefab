@@ -87,8 +87,8 @@ GameObject:
   - component: {fileID: 5181440691986762515}
   - component: {fileID: 5045872010601823280}
   - component: {fileID: 38710365725388110}
-  - component: {fileID: 3212692981077004000}
   - component: {fileID: 3257818162778957615}
+  - component: {fileID: 672820386470235310}
   m_Layer: 5
   m_Name: CountSelectorUI
   m_TagString: Untagged
@@ -156,19 +156,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3212692981077004000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469455921455798918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 850e2fe87ddf24347b85adf450506b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moneyText: {fileID: 7927641828928247667}
 --- !u!114 &3257818162778957615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +182,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &672820386470235310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469455921455798918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9258fc40e0a84ad4cbf7c63704acca86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countTxt: {fileID: 7927641828928247667}
+  priceTxt: {fileID: 5949868972499274489}
 --- !u!1 &1510195746925682947
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6531840992662924409
 RectTransform:
   m_ObjectHideFlags: 0

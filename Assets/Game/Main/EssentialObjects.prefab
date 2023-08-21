@@ -1182,6 +1182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 5454646115015147661}
   walletUI: {fileID: 3435698923048878377}
+  countSelectorUI: {fileID: 8185386054583341337}
 --- !u!1 &2480288683532835189
 GameObject:
   m_ObjectHideFlags: 0
@@ -4379,6 +4380,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 469455921455798918, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 540098561486262803, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5297,27 +5302,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5351925730203238654, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5351925730203238654, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5351925730203238654, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 132.42188
       objectReference: {fileID: 0}
     - target: {fileID: 5351925730203238654, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5351925730203238654, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 66.21094
       objectReference: {fileID: 0}
     - target: {fileID: 5351925730203238654, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 5477641298176372747, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5777,27 +5782,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7625664748338441086, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7625664748338441086, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7625664748338441086, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 167.57812
       objectReference: {fileID: 0}
     - target: {fileID: 7625664748338441086, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7625664748338441086, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 216.21094
       objectReference: {fileID: 0}
     - target: {fileID: 7625664748338441086, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7686180460149689994, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6279,3 +6284,14 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1510195746925682947, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
   m_PrefabInstance: {fileID: 8704899167053634999}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8185386054583341337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 672820386470235310, guid: 160be3733a69ae2479a104396d132f7c, type: 3}
+  m_PrefabInstance: {fileID: 8704899167053634999}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9258fc40e0a84ad4cbf7c63704acca86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
