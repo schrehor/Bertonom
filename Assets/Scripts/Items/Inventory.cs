@@ -53,12 +53,25 @@ public class Inventory : MonoBehaviour, ISavable
         return null;
     }
 
-    public void AddItem(ItemBase item, int count = 1)
+    ItemSlot GetItemSlot(ItemBase item)
     {
         var category = (int)GetCategoryFromItem(item);
         var currentSlot = GetSlotsByCategory(category);
 
-        var itemSlot = currentSlot.FirstOrDefault(slot => slot.Item == item);
+        return currentSlot.FirstOrDefault(slot => slot.Item == item);
+    }
+    
+    ItemSlot GetItemSlot(ItemBase item, out List<ItemSlot> currentSlot)
+    {
+        var category = (int)GetCategoryFromItem(item);
+        currentSlot = GetSlotsByCategory(category);
+
+        return currentSlot.FirstOrDefault(slot => slot.Item == item);
+    }
+    
+    public void AddItem(ItemBase item, int count = 1)
+    {
+        var itemSlot = GetItemSlot(item, out var currentSlot);
         if (itemSlot != null)
         {
             itemSlot.Count += count;
@@ -86,6 +99,18 @@ public class Inventory : MonoBehaviour, ISavable
         }
         
         OnUpdated?.Invoke();
+    }
+    
+    public int GetItemCount(ItemBase item)
+    {
+        var itemSlot = GetItemSlot(item);
+
+        if (itemSlot != null)
+        {
+            return itemSlot.Count;
+        }
+
+        return 0;
     }
 
     public bool HasItem(ItemBase item)
