@@ -2680,6 +2680,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c3cdb73bfab2742adb7ea592bb86a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableItems:
+  - {fileID: 11400000, guid: 627fd42577873410db38ded96f0ce993, type: 2}
+  - {fileID: 11400000, guid: f3746d9e89871415dacd00432c2a9302, type: 2}
+  - {fileID: 11400000, guid: 42a06a0cef4b74a619430cb86da2a6ce, type: 2}
+  - {fileID: 11400000, guid: 1d419ecf122bc4d2fa153c31fba99a53, type: 2}
+  - {fileID: 11400000, guid: b40b0a59a70db42a697a304e7e419559, type: 2}
+  - {fileID: 11400000, guid: 19623c34f8936804ca20e75f2bc2250d, type: 2}
+  - {fileID: 11400000, guid: 653a16215e27546c0b02d9e09ac64478, type: 2}
+  - {fileID: 11400000, guid: a641da219a93949fc9380bb50fb5bd09, type: 2}
+  - {fileID: 11400000, guid: 4cec7b7b1080249c4b9203b4407c4332, type: 2}
+  - {fileID: 11400000, guid: 695f9837574dc0947bf527e07d304bd6, type: 2}
+  - {fileID: 11400000, guid: d9ca3a6215870ac46a8ca5f3e145bfe9, type: 2}
 --- !u!1 &853964617
 GameObject:
   m_ObjectHideFlags: 0
