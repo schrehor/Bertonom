@@ -15,4 +15,10 @@ public class ItemSlotUI : MonoBehaviour
         nameText.text = itemSlot.Item.Name;
         countText.text = $"X {itemSlot.Count}";
     }
+
+    public void SetData(ItemBase item)
+    {
+        nameText.text = item.Name;
+        countText.text = $"$ {item.Price}";
+    }
 }
