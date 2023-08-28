@@ -22,7 +22,10 @@ public class ShopUI : MonoBehaviour
     private int _selectedItem;
     private float _itemSlotUIHeight;
     private RectTransform _itemListRect;
-    
+
+    private Action<ItemBase> _onItemSelected;
+    private Action _onBack;
+
     private void Awake()
     {
         _itemListRect = itemList.GetComponent<RectTransform>();
@@ -33,9 +36,12 @@ public class ShopUI : MonoBehaviour
         _itemSlotUIHeight = itemSlotUI.GetComponent<RectTransform>().rect.height;
     }
 
-    public void Show(List<ItemBase> availableItems)
+    public void Show(List<ItemBase> availableItems, Action<ItemBase> onItemSelected, Action onBack)
     {
         _availableItems = availableItems;
+        _onItemSelected = onItemSelected;
+        _onBack = onBack;
+        
         gameObject.SetActive(true);
         UpdateItemList();
     }
@@ -58,6 +64,15 @@ public class ShopUI : MonoBehaviour
         if (_selectedItem != prevSelectedItem)
         {
             UpdateItemSelection();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            _onItemSelected?.Invoke(_availableItems[_selectedItem]);
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            _onBack?.Invoke();
         }
     }
     
