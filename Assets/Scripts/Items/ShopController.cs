@@ -136,6 +136,9 @@ public class ShopController : MonoBehaviour
         _state = ShopState.Selling;
     }
     
+    // TODO:
+    // 1) In the count selector, you can increment by 1s or 10s (depending on the axis of input), and the count loops (if you increment past maxCount it goes to 1, and vice versa). 
+    // 2) When buying, I clamp the passed maxCount to Min(999, FloorToInt(money/buyPrice)), which eliminates the need to check if we have enough money. 
     IEnumerator BuyItem(ItemBase item)
     {
         _state = ShopState.Busy;
