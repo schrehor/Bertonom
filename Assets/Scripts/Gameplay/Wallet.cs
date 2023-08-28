@@ -28,4 +28,9 @@ public class Wallet : MonoBehaviour
         money -= amount;
         OnMoneyChanged?.Invoke();
     }
+    
+    public bool HasEnoughMoney(float amount)
+    {
+        return money >= amount;
+    }
 }

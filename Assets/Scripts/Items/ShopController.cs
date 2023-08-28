@@ -54,7 +54,7 @@ public class ShopController : MonoBehaviour
             //Buy
             _state = ShopState.Buying;
             walletUI.Show();
-            shopUI.Show(_merchant.AvailableItems);
+            shopUI.Show(_merchant.AvailableItems, (item) => StartCoroutine(BuyItem(item)), OnBackFromBuying);
         }
         else if (selectedChoice == 1)
         {
@@ -134,5 +134,53 @@ public class ShopController : MonoBehaviour
         walletUI.Close();
         
         _state = ShopState.Selling;
+    }
+    
+    IEnumerator BuyItem(ItemBase item)
+    {
+        _state = ShopState.Busy;
+        
+        yield return DialogManager.Instance.ShowDialogText($"Kolko G?",
+            waitForInput: false,
+            autoClose: false);
+        
+        int countToBuy = 1;
+        yield return countSelectorUI.ShowSelector(100, item.Price,
+            (selectedCount) => countToBuy = selectedCount);
+        
+        DialogManager.Instance.CloseDialog();
+        
+        var buyingPrice = item.Price * countToBuy;
+
+        if (Wallet.Instance.HasEnoughMoney(buyingPrice))
+        {
+            int selectedChoice = 0;
+            yield return DialogManager.Instance.ShowDialogText($"Ze si to ty tak to mas za {buyingPrice}, nech nezerem.", 
+                waitForInput: false,
+                choices: new List<string>() { "Diky bratinenko", "Tak to ti musi jebat nakompletku ale" },
+                onChoiceSelected: choiceIndex => selectedChoice = choiceIndex);
+
+            if (selectedChoice == 0)
+            {
+                // Buy
+                _inventory.AddItem(item, countToBuy);
+                Wallet.Instance.TakeMoney(buyingPrice);
+                
+                yield return DialogManager.Instance.ShowDialogText($"Dakujeme, ze nakupujete v Tescu.");
+            }
+        }
+        else
+        {
+            yield return DialogManager.Instance.ShowDialogText($"Na to nemas ty chudak, skap.");
+        }
+        
+        _state = ShopState.Buying;
+    }
+
+    void OnBackFromBuying()
+    {
+        shopUI.Close();
+        walletUI.Close();
+        StartCoroutine(StartMenuState());
     }
 }

@@ -46,6 +46,11 @@ public class ShopUI : MonoBehaviour
         UpdateItemList();
     }
 
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+    
     public void HandleUpdate()
     {
         var prevSelectedItem = _selectedItem;
