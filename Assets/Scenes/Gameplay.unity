@@ -969,6 +969,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1558893961450512446, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: shopCameraOffset.x
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1631062529128697000, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
