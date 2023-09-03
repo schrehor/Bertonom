@@ -179,6 +179,10 @@ PrefabInstance:
       value: Town2
       objectReference: {fileID: 0}
     - target: {fileID: 3229827585126189326, guid: 4be9d5371db5f65409b8d43093b1d5c8, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: c2764b8d77603f84f9e79a77edd30c0a, type: 3}
+    - target: {fileID: 3229827585126189326, guid: 4be9d5371db5f65409b8d43093b1d5c8, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -412,6 +416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Route1
       objectReference: {fileID: 0}
+    - target: {fileID: 3229827585126189326, guid: 4be9d5371db5f65409b8d43093b1d5c8, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 3ef96b3be328590419580fd27d610313, type: 3}
     - target: {fileID: 3229827585126189326, guid: 4be9d5371db5f65409b8d43093b1d5c8, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 2
@@ -1980,6 +1988,10 @@ PrefabInstance:
     - target: {fileID: 4222256310227019348, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391982145614431719, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
+      propertyPath: m_Volume
+      value: 0.055
       objectReference: {fileID: 0}
     - target: {fileID: 4406176771113458041, guid: 9aeb04ddc6d8b5249a801fa149dc3357, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3838,6 +3850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HomeTown
       objectReference: {fileID: 0}
+    - target: {fileID: 3229827585126189326, guid: 4be9d5371db5f65409b8d43093b1d5c8, type: 3}
+      propertyPath: sceneMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 99274620df2c53243a740b14555128fb, type: 3}
     - target: {fileID: 3229827585126189326, guid: 4be9d5371db5f65409b8d43093b1d5c8, type: 3}
       propertyPath: connectedScenes.Array.size
       value: 2
