@@ -1296,6 +1296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evolutionUI: {fileID: 7798907082439982260}
   pokemonImage: {fileID: 4539915210401090518}
+  evolutionMusic: {fileID: 8300000, guid: 9f4dd0b94a6bfbd45876f93a54171c78, type: 3}
 --- !u!114 &1558893961450512446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2074,7 +2075,10 @@ MonoBehaviour:
   trainerImage: {fileID: 2480288684925150874}
   pokeballSprite: {fileID: 1721794006989783044, guid: 47bcec10f87c79b4d91d87d71fe64be7, type: 3}
   moveForgettingUI: {fileID: 2480288683541728653}
-  inventoryUI: {fileID: 0}
+  inventoryUI: {fileID: 5454646115015147661}
+  wildBattleMusic: {fileID: 8300000, guid: 5a773d60c1961844abd7d41b26ab0cf6, type: 3}
+  trainerBattleMusic: {fileID: 8300000, guid: 6ba8d0f1bd826384c87de9f6425025cd, type: 3}
+  battleVictoryMusic: {fileID: 8300000, guid: e897b9bdbf6e4ae4d9c3a6c406723ee4, type: 3}
 --- !u!1 &2480288683981254590
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,6 +3397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicPlayer: {fileID: 4391982145614431719}
   sfxPlayer: {fileID: 2095819533062268366}
+  fadeDuration: 0.75
 --- !u!1 &7135166415656447144
 GameObject:
   m_ObjectHideFlags: 0

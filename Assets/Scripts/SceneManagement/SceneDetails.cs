@@ -9,6 +9,8 @@ public class SceneDetails : MonoBehaviour
     [SerializeField] private List<SceneDetails> connectedScenes;
     [SerializeField] private AudioClip sceneMusic;
     
+    public AudioClip SceneMusic => sceneMusic;
+    
     public bool IsLoaded { get; private set; }
     List<SavableEntity> savableEntities;
     private void OnTriggerEnter2D(Collider2D collision)

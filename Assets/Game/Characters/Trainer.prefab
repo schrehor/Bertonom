@@ -208,6 +208,7 @@ MonoBehaviour:
   dialogAfterBattle:
     lines:
     - To sa nehra ja, som nemal zaviazane topanky ty kokotko
+  trainerAppearsClip: {fileID: 8300000, guid: fcf95119bbac2784a9b9ed0afeb24afa, type: 3}
 --- !u!114 &659186753394387436
 MonoBehaviour:
   m_ObjectHideFlags: 0
