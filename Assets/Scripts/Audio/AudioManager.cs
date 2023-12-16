@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource sfxPlayer;
     [SerializeField] private float fadeDuration = 0.75f;
 
+    private AudioClip _currentMusic;
     private float _originalMusicVolume;
     private Dictionary<AudioId, AudioData> _sfxLookup;
     public static AudioManager Instance { get; private set; }
@@ -59,11 +60,12 @@ public class AudioManager : MonoBehaviour
             
     public void PlayMusic(AudioClip clip, bool loop = true, bool fade = false)
     {
-        if (clip == null)
+        if (clip == null || clip == _currentMusic)
         {
             return;
         }
-        
+
+        _currentMusic = clip;
         StartCoroutine(PlayMusicAsync(clip, loop, fade));
     }
 
