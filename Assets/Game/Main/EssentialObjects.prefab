@@ -3400,6 +3400,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8bb158c045da643d4a3e6b60a758ee24, type: 3}
   - id: 1
     clip: {fileID: 8300000, guid: 7a3561363284b42179f8c73e33932f2e, type: 3}
+  - id: 4
+    clip: {fileID: 8300000, guid: e90c13774c5e4b14aad41df716827091, type: 3}
+  - id: 5
+    clip: {fileID: 8300000, guid: ec7eeb436ce1bdc428af86ef2bedd16c, type: 3}
   musicPlayer: {fileID: 4391982145614431719}
   sfxPlayer: {fileID: 2095819533062268366}
   fadeDuration: 0.75

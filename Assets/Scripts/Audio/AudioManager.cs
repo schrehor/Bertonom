@@ -29,17 +29,23 @@ public class AudioManager : MonoBehaviour
         _sfxLookup = sfxList.ToDictionary(x => x.id);
     }
 
-    public void PlaySfx(AudioClip clip)
+    public void PlaySfx(AudioClip clip, bool pauseMusic = false)
     {
         if (clip == null)
         {
             return;
         }
-        
-        sfxPlayer.PlayOneShot(clip);
+
+		if (pauseMusic)
+		{
+			musicPlayer.Pause();
+            StartCoroutine(UnpauseMusic(clip.length));
+		}
+
+		sfxPlayer.PlayOneShot(clip);
     }
     
-    public void PlaySfx(AudioId audioId)
+    public void PlaySfx(AudioId audioId, bool pauseMusic = false)
     {
         if (!_sfxLookup.ContainsKey(audioId))
         {
@@ -47,7 +53,7 @@ public class AudioManager : MonoBehaviour
         }
         
         var audioData = _sfxLookup[audioId];
-        PlaySfx(audioData.clip);
+        PlaySfx(audioData.clip, pauseMusic);
     }
     
             
@@ -77,9 +83,18 @@ public class AudioManager : MonoBehaviour
             yield return musicPlayer.DOFade(_originalMusicVolume, fadeDuration).WaitForCompletion();
         }
     }
+
+    IEnumerator UnpauseMusic(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        musicPlayer.volume = 0;
+        musicPlayer.UnPause();
+        musicPlayer.DOFade(_originalMusicVolume, fadeDuration);
+    }
 }
 
-public enum AudioId { UISelect, Hit, Faint, ExpGain }
+public enum AudioId { UISelect, Hit, Faint, ExpGain, ItemObtained, PokemonObtained }
 
 [Serializable]
 public class AudioData

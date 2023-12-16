@@ -17,7 +17,9 @@ public class PokemonGiver : MonoBehaviour
         player.GetComponent<PokemonParty>().AddPokemon(pokemonToGive);
         _used = true;
 
-        string dialogText = $"{player.Name} received {pokemonToGive.Base.Name}";
+		AudioManager.Instance.PlaySfx(AudioId.PokemonObtained, pauseMusic: true);
+
+		string dialogText = $"{player.Name} received {pokemonToGive.Base.Name}";
 
         yield return DialogManager.Instance.ShowDialogText(dialogText);
     }
