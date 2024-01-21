@@ -27,10 +27,12 @@ public class Ledge : MonoBehaviour
     IEnumerator Jump(Character character)
     {
         GameController.Instance.PauseGame(true);
+        character.Animator.IsJumping = true;
 
 		var jumpDestination = character.transform.position + new Vector3(xDir, yDir, 0) * 2;
         yield return character.transform.DOJump(jumpDestination, 0.3f, 1, 0.5f).WaitForCompletion();
 
+		character.Animator.IsJumping = false;
 		GameController.Instance.PauseGame(false);
 	}
 }

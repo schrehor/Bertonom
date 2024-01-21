@@ -14,6 +14,7 @@ public class CharacterAnimator : MonoBehaviour
     public float MoveX { get; set; }
     public float MoveY { get; set; }
     public bool IsMoving { get; set; }
+    public bool IsJumping { get; set; }
 
     // States
     SpriteAnimator walkDownAnim;
@@ -67,7 +68,11 @@ public class CharacterAnimator : MonoBehaviour
             currentAnim.Start();
         }
 
-        if (IsMoving)
+        if (IsJumping)
+        {
+			spriteRenderer.sprite = currentAnim.Frames[currentAnim.Frames.Count - 1];
+		}
+        else if (IsMoving)
         {
             currentAnim.HandleUpdate();
         }
