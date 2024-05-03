@@ -75,12 +75,12 @@ public class GameController : MonoBehaviour
         {
             partyScreen.SetPartyData();
             _state = _stateBeforeEvolution;
-            
+
             AudioManager.Instance.PlayMusic(CurrentScene.SceneMusic, fade: true);
         };
-        
-        ShopController.Instance.OnStartShopping += () => _state = GameState.Shop; 
-        ShopController.Instance.OnFinishShopping += () => _state = GameState.FreeRoam; 
+
+        ShopController.Instance.OnStartShopping += () => _state = GameState.Shop;
+        ShopController.Instance.OnFinishShopping += () => _state = GameState.FreeRoam;
     }
 
     public void PauseGame(bool pause)
@@ -103,7 +103,7 @@ public class GameController : MonoBehaviour
             _trainer.BattleLost();
             _trainer = null;
         }
-        
+
         partyScreen.SetPartyData();
 
         _state = GameState.FreeRoam;
@@ -182,8 +182,8 @@ public class GameController : MonoBehaviour
         {
             Action onSeleced = () =>
             {
-                // TODO: Go to Summary screen
-            };
+                    // TODO: Go to Summary screen
+                };
 
             Action onBack = () =>
             {
@@ -246,7 +246,7 @@ public class GameController : MonoBehaviour
     public IEnumerator MoveCamera(Vector2 moveOffset, bool waitForFadeOut = false)
     {
         yield return Fader.Instance.FadeIn(0.5f);
-        
+
         worldCamera.transform.position += new Vector3(moveOffset.x, moveOffset.y, 0);
 
         if (waitForFadeOut)
@@ -261,3 +261,4 @@ public class GameController : MonoBehaviour
 
     public GameState State => _state;
 }
+

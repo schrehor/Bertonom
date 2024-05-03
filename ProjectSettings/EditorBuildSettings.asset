@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/HomeTown.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Cave1.unity
+    guid: 01298b871d6f5cb43846566f25a163bc
+  - enabled: 1
     path: Assets/Scenes/Route1.unity
     guid: 81a9f29d539cf554d9e31cb760ee2fca
   - enabled: 1

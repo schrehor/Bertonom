@@ -19,6 +19,7 @@ public class BattleUnit : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("ASSAS::>   " + this.gameObject.name);
         image = GetComponent<Image>();
         originalPos = image.transform.localPosition;
         //originalPos = image.rectTransform.localPosition;
@@ -26,21 +27,23 @@ public class BattleUnit : MonoBehaviour
     }
     public void Setup(Pokemon pokemon)
     {
-       Pokemon = pokemon;
+        Pokemon = pokemon;
         if (isPlayerUnit)
         {
             image.sprite = Pokemon.Base.BackSprite;
+            Debug.Log("BackSprite  :: > " + Pokemon.Base.BackSprite);
         }
         else
         {
             image.sprite = Pokemon.Base.FrontSprite;
+            Debug.Log("FrontSprite  :: > " + Pokemon.Base.FrontSprite);
         }
 
         hud.gameObject.SetActive(true);
         hud.SetData(pokemon);
 
         transform.localScale = Vector3.one;
-        image.color = originalColor;    
+        image.color = originalColor;
 
         PlayEnterAnimation();
     }
