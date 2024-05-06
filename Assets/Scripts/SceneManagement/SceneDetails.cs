@@ -13,6 +13,7 @@ public class SceneDetails : MonoBehaviour
     
     public bool IsLoaded { get; private set; }
     List<SavableEntity> savableEntities;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -60,7 +61,6 @@ public class SceneDetails : MonoBehaviour
         {
             var operation = SceneManager.LoadSceneAsync(gameObject.name, LoadSceneMode.Additive);
             IsLoaded = true;
-
             operation.completed += (AsyncOperation op) =>
             {
                 savableEntities = GetSavableEntitiesInScene();

@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
 {
     public float moveSpeed;
     CharacterAnimator animator;
+    //Rigidbody2D rb;
 
     public bool IsMoving { get; private set; }
     public float OffsetY { get; private set; } = 0.3f;
@@ -16,6 +17,7 @@ public class Character : MonoBehaviour
     {
         animator = GetComponent<CharacterAnimator>();
         SetPositionAndSnapToTile(transform.position);
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
@@ -70,6 +72,9 @@ public class Character : MonoBehaviour
         IsMoving = false;
         
         OnMoveOver?.Invoke();
+
+        //Vector2 newPosition = rb.position + moveVec * moveSpeed * Time.fixedDeltaTime;
+        //StartCoroutine(MapController.Instance.IECheckRoomEntered(newPosition));
     }
 
     /// <summary>
